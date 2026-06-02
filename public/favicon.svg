@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Left arm — navy blue, 3 parallel stripes going upper-left -->
+  <polygon points="7,23 15,18 48,80 40,82" fill="#1e3a7a"/>
+  <polygon points="18,23 26,18 59,80 51,82" fill="#1e3a7a"/>
+  <polygon points="29,23 37,18 70,80 62,82" fill="#1e3a7a"/>
+
+  <!-- Right arm — cyan, 3 arrow stripes going upper-right (fan from V bottom) -->
+  <!-- Stripe 1: innermost -->
+  <polygon points="54,82 64,79 77,30 74,20 67,26" fill="#29abe2"/>
+  <!-- Stripe 2: middle -->
+  <polygon points="65,82 75,79 89,22 86,12 79,18" fill="#29abe2"/>
+  <!-- Stripe 3: outermost, reaches highest -->
+  <polygon points="76,82 86,79 97,14 95,4 87,10" fill="#29abe2"/>
+</svg>
