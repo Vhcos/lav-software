@@ -30,9 +30,14 @@ export default function Header() {
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <a href="#inicio" className="flex items-center gap-2.5">
           <img src="/favicon.svg" alt="LAV Systems" className="h-8 w-8" />
-          <span className="text-lg font-bold tracking-tight text-navy">
-            LAV <span className="text-accent">Systems</span>
-          </span>
+          <div className="flex flex-col leading-none">
+            <span className="text-lg font-bold tracking-tight text-navy">
+              LAV <span className="text-accent">Systems</span>
+            </span>
+            <span className="text-[10px] font-medium tracking-widest text-slate-400 uppercase">
+              Software Libre
+            </span>
+          </div>
         </a>
 
         <ul className="hidden items-center gap-7 md:flex">
