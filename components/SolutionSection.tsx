@@ -41,7 +41,7 @@ export default function SolutionSection() {
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s) => (
-            <GlowCard key={s.num} customSize glowColor="blue" className="p-7">
+            <GlowCard key={s.num} glowColor="blue" className="p-7">
               <span className="mb-5 block font-mono text-3xl font-bold text-accent/40">{s.num}</span>
               <h3 className="mb-3 font-semibold text-white">{s.title}</h3>
               <p className="text-sm leading-relaxed text-white/50">{s.desc}</p>

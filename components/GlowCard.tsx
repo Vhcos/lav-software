@@ -6,7 +6,7 @@ interface GlowCardProps {
   children: ReactNode;
   className?: string;
   glowColor?: "blue" | "purple" | "green" | "red" | "orange";
-  customSize?: boolean;
+  light?: boolean;
 }
 
 const glowColorMap = {
@@ -69,7 +69,7 @@ const GLOW_STYLES = `
 
 let stylesInjected = false;
 
-export function GlowCard({ children, className = "", glowColor = "blue", customSize = false }: GlowCardProps) {
+export function GlowCard({ children, className = "", glowColor = "blue", light = false }: GlowCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
 
@@ -106,8 +106,8 @@ export function GlowCard({ children, className = "", glowColor = "blue", customS
         "--spread": spread,
         "--radius": "16",
         "--border": "1.5",
-        "--backdrop": "hsl(0 0% 100% / 0.04)",
-        "--backup-border": "rgba(255,255,255,0.08)",
+        "--backdrop": light ? "#ffffff" : "hsl(0 0% 100% / 0.04)",
+        "--backup-border": light ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.08)",
         "--size": "220",
         "--outer": "1",
         "--border-size": "calc(var(--border, 2) * 1px)",

@@ -1,3 +1,5 @@
+import { GlowCard } from "@/components/GlowCard";
+
 const problems = [
   {
     title: "Procesos manuales",
@@ -73,16 +75,13 @@ export default function ProblemSection() {
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {problems.map((p) => (
-            <div
-              key={p.title}
-              className="rounded-2xl border border-slate-100 bg-slate-50 p-6 transition-shadow hover:shadow-md"
-            >
+            <GlowCard key={p.title} light glowColor="blue" className="p-6">
               <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-navy/5 text-navy">
                 {p.icon}
               </div>
               <h3 className="mb-2 font-semibold text-navy">{p.title}</h3>
               <p className="text-sm leading-relaxed text-slate-500">{p.desc}</p>
-            </div>
+            </GlowCard>
           ))}
         </div>
       </div>
