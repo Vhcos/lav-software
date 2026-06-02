@@ -19,22 +19,28 @@ export default function OriginSection() {
           ))}
         </div>
 
-        {/* Names */}
-        <p className="mb-10 text-sm text-slate-400">
+        {/* Names — imperceptible */}
+        <p className="mb-10 text-sm text-black/[0.05]">
           {names.join(" · ")}
         </p>
 
-        <blockquote className="mb-6 text-lg leading-relaxed text-slate-600 md:text-xl">
-          LAV nace como una marca familiar inspirada en{" "}
-          <span className="font-medium text-navy">Laura, Agustina, Valentina y Victoria</span>.
-          Antes que cualquier empresa, software o proyecto, ellas son mi mejor creación.
-        </blockquote>
-
-        <p className="text-base leading-relaxed text-slate-500">
-          Esa idea también define cómo trabajamos: construir cosas útiles, simples y duraderas.
-          Sistemas que no existan solo para verse bien, sino porque resuelven un problema real
-          y dejan algo funcionando.
-        </p>
+        {/* New body */}
+        <div className="space-y-5 text-left text-base leading-relaxed text-slate-500 md:text-lg">
+          <p>
+            LAV Systems nace de una convicción: la tecnología solo tiene valor cuando resuelve un problema real.
+          </p>
+          <p>
+            Después de años trabajando en finanzas, estrategia, operaciones y control de gestión, vi un patrón
+            repetido en muchas empresas: procesos manuales, datos dispersos, reportes lentos y decisiones
+            tomadas con poca visibilidad.
+          </p>
+          <p>
+            Hoy la inteligencia artificial, el software libre y las herramientas modernas permiten construir
+            soluciones a medida de forma más rápida, eficiente y accesible. LAV Systems nace para aprovechar
+            ese cambio y convertir dolores concretos de negocio en sistemas simples, inteligentes y listos
+            para operar.
+          </p>
+        </div>
 
         <div className="mt-12 border-t border-slate-100 pt-10">
           <p className="text-sm text-slate-400">
