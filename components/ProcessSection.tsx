@@ -1,3 +1,5 @@
+import { GlowCard } from "@/components/GlowCard";
+
 const steps = [
   { n: "01", title: "Entendemos el negocio", desc: "Conversamos con quienes conocen el negocio por dentro: dueños, gerentes y equipos operativos." },
   { n: "02", title: "Detectamos el dolor", desc: "Identificamos los procesos que generan pérdidas de tiempo, errores o falta de control." },
@@ -26,14 +28,11 @@ export default function ProcessSection() {
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s) => (
-            <div
-              key={s.n}
-              className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-colors hover:bg-white/[0.07]"
-            >
-              <span className="mb-4 block font-mono text-2xl font-bold text-accent/50">{s.n}</span>
-              <h3 className="mb-2 font-semibold text-white">{s.title}</h3>
-              <p className="text-sm leading-relaxed text-white/45">{s.desc}</p>
-            </div>
+            <GlowCard key={s.n} customSize glowColor="blue" className="p-7">
+              <span className="mb-5 block font-mono text-3xl font-bold text-accent/40">{s.n}</span>
+              <h3 className="mb-3 font-semibold text-white">{s.title}</h3>
+              <p className="text-sm leading-relaxed text-white/50">{s.desc}</p>
+            </GlowCard>
           ))}
         </div>
       </div>
