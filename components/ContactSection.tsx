@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 
-// TODO: Replace with your LAV Systems Calendly event URL once created
-const CALENDLY_URL = "https://calendly.com/vhurtado-lav/diagnostico-30min";
+const CALENDLY_URL = "https://calendly.com/lav-software";
 
 function CardPanel({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
@@ -68,7 +67,7 @@ function ContactFormPanel() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
@@ -143,7 +142,7 @@ function NewsletterPanel() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
