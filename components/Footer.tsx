@@ -1,3 +1,5 @@
+import { TextHoverEffect } from "@/components/TextHoverEffect";
+
 const links = [
   { label: "Servicios", href: "#servicios" },
   { label: "Proceso", href: "#proceso" },
@@ -8,16 +10,32 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="bg-navy border-t border-white/5 py-12">
-      <div className="mx-auto max-w-6xl px-6">
+    <footer className="relative overflow-hidden border-t border-white/5 bg-navy">
+      {/* Radial background glow */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(125% 125% at 50% 10%, rgba(15,33,55,0.7) 50%, rgba(8,145,178,0.12) 100%)",
+        }}
+      />
+
+      {/* Text hover effect */}
+      <div className="relative mx-auto h-28 max-w-4xl px-6 pt-10">
+        <TextHoverEffect text="LAV SYSTEMS" duration={0.3} />
+      </div>
+
+      {/* Footer content */}
+      <div className="relative mx-auto max-w-6xl px-6 pb-10">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           {/* Brand */}
           <div>
-            <p className="mb-1 text-lg font-bold text-white">
-              LAV <span className="text-accent">Systems</span>
+            <p className="mb-1 text-sm text-white/50">
+              Software inteligente para resolver problemas reales de negocio.
             </p>
-            <p className="mb-1 text-sm text-white/50">Software inteligente para resolver problemas reales de negocio.</p>
-            <p className="mb-3 text-xs text-white/30">Software a medida, automatización, datos, IA e IoT para empresas.</p>
+            <p className="mb-3 text-xs text-white/30">
+              Software a medida, automatización, datos, IA e IoT para empresas.
+            </p>
             <a
               href="https://lav.software"
               className="text-sm text-white/25 transition-colors hover:text-white/50"
@@ -31,7 +49,10 @@ export default function Footer() {
             <ul className="flex flex-wrap gap-x-8 gap-y-3">
               {links.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="text-sm text-white/40 transition-colors hover:text-white/70">
+                  <a
+                    href={l.href}
+                    className="text-sm text-white/40 transition-colors hover:text-white/70"
+                  >
                     {l.label}
                   </a>
                 </li>
