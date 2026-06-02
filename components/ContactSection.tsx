@@ -5,8 +5,6 @@ import { useState } from "react";
 // TODO: Replace with your LAV Systems Calendly event URL once created
 const CALENDLY_URL = "https://calendly.com/vhurtado-lav/diagnostico-30min";
 
-const CONTACT_EMAIL = "vhurtado@grupohurtado.cl";
-
 function CardPanel({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={`rounded-2xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur-sm ${className}`}>
@@ -46,8 +44,7 @@ function CalendlyPanel() {
       </div>
       <h3 className="mb-2 font-semibold text-white">Agendar diagnóstico</h3>
       <p className="mb-6 text-sm leading-relaxed text-white/45">
-        Reunión de 30 minutos para entender tu problema, revisar procesos y diseñar una propuesta clara.
-        Sin compromiso.
+        Reunión de 30 minutos para entender tu problema, revisar procesos y diseñar una propuesta clara. Sin compromiso.
       </p>
       <a
         href={CALENDLY_URL}
@@ -57,9 +54,7 @@ function CalendlyPanel() {
       >
         Elegir horario
       </a>
-      <p className="mt-4 text-center text-xs text-white/25">
-        Diagnóstico claro · Propuesta aterrizada
-      </p>
+      <p className="mt-4 text-center text-xs text-white/25">Diagnóstico claro · Propuesta aterrizada</p>
     </CardPanel>
   );
 }
@@ -70,15 +65,26 @@ function ContactFormPanel() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Contacto LAV Systems — ${company || name}`);
-    const body = encodeURIComponent(
-      `Nombre: ${name}\nEmpresa: ${company}\nEmail: ${email}\n\nMensaje:\n${message}`
-    );
-    window.open(`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`);
-    setSent(true);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, company, email, message }),
+      });
+      if (!res.ok) throw new Error();
+      setSent(true);
+    } catch {
+      setError("No se pudo enviar. Intenta nuevamente.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -89,16 +95,14 @@ function ContactFormPanel() {
         </svg>
       </div>
       <h3 className="mb-2 font-semibold text-white">Escríbenos</h3>
-      <p className="mb-5 text-sm leading-relaxed text-white/45">
-        Cuéntanos tu problema y te respondemos en menos de 24 horas.
-      </p>
+      <p className="mb-5 text-sm leading-relaxed text-white/45">Cuéntanos tu problema y te respondemos en menos de 24 horas.</p>
 
       {sent ? (
         <div className="flex flex-col items-center gap-3 rounded-xl border border-accent/20 bg-accent/5 py-8 text-center">
           <svg className="h-8 w-8 text-accent" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <p className="text-sm text-white/70">¡Listo! Se abrió tu cliente de correo.<br />Te respondemos pronto.</p>
+          <p className="text-sm text-white/70">¡Mensaje enviado!<br />Te respondemos pronto.</p>
           <button onClick={() => setSent(false)} className="text-xs text-white/30 hover:text-white/60">
             Enviar otro mensaje
           </button>
@@ -119,11 +123,13 @@ function ContactFormPanel() {
               className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-white/20 outline-none transition focus:border-accent/50 focus:ring-1 focus:ring-accent/30"
             />
           </div>
+          {error && <p className="text-xs text-red-400">{error}</p>}
           <button
             type="submit"
-            className="flex h-11 w-full items-center justify-center rounded-xl bg-white/10 text-sm font-medium text-white transition hover:bg-white/15"
+            disabled={loading}
+            className="flex h-11 w-full items-center justify-center rounded-xl bg-white/10 text-sm font-medium text-white transition hover:bg-white/15 disabled:opacity-50"
           >
-            Enviar mensaje
+            {loading ? "Enviando…" : "Enviar mensaje"}
           </button>
         </form>
       )}
@@ -134,13 +140,26 @@ function ContactFormPanel() {
 function NewsletterPanel() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const subject = encodeURIComponent("Suscripción newsletter LAV Systems");
-    const body = encodeURIComponent(`Nueva suscripción al newsletter de LAV Systems:\n${email}`);
-    window.open(`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`);
-    setSent(true);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error();
+      setSent(true);
+    } catch {
+      setError("No se pudo suscribir. Intenta nuevamente.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -160,27 +179,20 @@ function NewsletterPanel() {
           <svg className="h-8 w-8 text-accent" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <p className="text-sm text-white/70">¡Suscrito! Te añadiremos<br />a la lista pronto.</p>
+          <p className="text-sm text-white/70">¡Suscrito!<br />Te añadiremos a la lista pronto.</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          <InputField
-            label="Tu email"
-            type="email"
-            value={email}
-            onChange={setEmail}
-            placeholder="tu@empresa.cl"
-            required
-          />
+          <InputField label="Tu email" type="email" value={email} onChange={setEmail} placeholder="tu@empresa.cl" required />
+          {error && <p className="text-xs text-red-400">{error}</p>}
           <button
             type="submit"
-            className="flex h-11 w-full items-center justify-center rounded-xl bg-white/10 text-sm font-medium text-white transition hover:bg-white/15"
+            disabled={loading}
+            className="flex h-11 w-full items-center justify-center rounded-xl bg-white/10 text-sm font-medium text-white transition hover:bg-white/15 disabled:opacity-50"
           >
-            Suscribirse
+            {loading ? "Suscribiendo…" : "Suscribirse"}
           </button>
-          <p className="text-center text-xs text-white/25">
-            Sin spam · Puedes cancelar cuando quieras
-          </p>
+          <p className="text-center text-xs text-white/25">Sin spam · Puedes cancelar cuando quieras</p>
         </form>
       )}
     </CardPanel>
@@ -191,7 +203,6 @@ export default function ContactSection() {
   return (
     <section id="contacto" className="bg-navy py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
-        {/* Header */}
         <div className="mb-14 text-center">
           <p className="mb-4 text-sm font-medium uppercase tracking-widest text-accent">Contacto</p>
           <h2 className="mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
@@ -203,7 +214,6 @@ export default function ContactSection() {
           </p>
         </div>
 
-        {/* Three panels */}
         <div className="grid gap-5 md:grid-cols-3">
           <CalendlyPanel />
           <ContactFormPanel />
