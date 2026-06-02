@@ -55,7 +55,7 @@ export function DottedSurface() {
       size: 6,
       vertexColors: true,
       transparent: true,
-      opacity: 0.25,
+      opacity: 0.5,
       sizeAttenuation: true,
     });
 
