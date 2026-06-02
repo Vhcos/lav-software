@@ -13,13 +13,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "lav.software — Coming Soon",
-  description: "Building the future, one line at a time. Software development company.",
+  title: "LAV Systems | Software inteligente a medida para empresas",
+  description:
+    "Creamos software personalizado con IA para ordenar procesos, automatizar tareas, integrar datos y mejorar la toma de decisiones en empresas.",
   openGraph: {
-    title: "lav.software",
-    description: "Building the future, one line at a time.",
+    title: "LAV Systems | Software inteligente a medida para empresas",
+    description:
+      "Creamos software personalizado con IA para ordenar procesos, automatizar tareas, integrar datos y mejorar la toma de decisiones en empresas.",
     url: "https://lav.software",
-    siteName: "lav.software",
+    siteName: "LAV Systems",
     locale: "es_CL",
     type: "website",
   },

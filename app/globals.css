@@ -1,68 +1,23 @@
 @import "tailwindcss";
 
-:root {
-  --background: #080808;
-  --foreground: #ededed;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-navy: #0c1f35;
+  --color-navy-light: #163352;
+  --color-accent: #0891b2;
+  --color-accent-dark: #0e7490;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #ffffff;
+  color: #0f172a;
   font-family: var(--font-geist-sans), Arial, sans-serif;
-}
-
-@keyframes blob-drift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(40px, -30px) scale(1.08); }
-  66%       { transform: translate(-30px, 20px) scale(0.95); }
-}
-
-@keyframes blob-drift-2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(-50px, 40px) scale(1.1); }
-  66%       { transform: translate(30px, -20px) scale(0.92); }
-}
-
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes glow-pulse {
-  0%, 100% { text-shadow: 0 0 20px rgba(139, 92, 246, 0.4), 0 0 40px rgba(139, 92, 246, 0.2); }
-  50%       { text-shadow: 0 0 30px rgba(139, 92, 246, 0.7), 0 0 60px rgba(139, 92, 246, 0.4); }
-}
-
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
-}
-
-.blob-1 { animation: blob-drift 12s ease-in-out infinite; }
-.blob-2 { animation: blob-drift-2 16s ease-in-out infinite; }
-.blob-3 { animation: blob-drift 20s ease-in-out infinite reverse; }
-
-.fade-up-1 { animation: fade-up 0.8s ease-out 0.1s both; }
-.fade-up-2 { animation: fade-up 0.8s ease-out 0.3s both; }
-.fade-up-3 { animation: fade-up 0.8s ease-out 0.5s both; }
-.fade-up-4 { animation: fade-up 0.8s ease-out 0.7s both; }
-.fade-up-5 { animation: fade-up 0.8s ease-out 0.9s both; }
-
-.brand-glow { animation: glow-pulse 3s ease-in-out infinite; }
-
-.cursor-blink {
-  display: inline-block;
-  width: 2px;
-  height: 1em;
-  background: currentColor;
-  margin-left: 2px;
-  vertical-align: text-bottom;
-  animation: cursor-blink 1.2s step-end infinite;
+  -webkit-font-smoothing: antialiased;
 }
