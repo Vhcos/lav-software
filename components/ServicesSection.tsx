@@ -1,3 +1,5 @@
+import { GlowCard } from "@/components/GlowCard";
+
 const services = [
   {
     title: "Diagnóstico IA 360",
@@ -62,10 +64,7 @@ export default function ServicesSection() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {services.map((s) => (
-            <div
-              key={s.title}
-              className="group rounded-2xl border border-slate-200 bg-white p-8 transition-shadow hover:shadow-lg"
-            >
+            <GlowCard key={s.title} light glowColor="blue" className="p-8">
               <div className="mb-6 flex items-start justify-between gap-4">
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-navy text-white">
                   {s.icon}
@@ -84,7 +83,7 @@ export default function ServicesSection() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </GlowCard>
           ))}
         </div>
       </div>

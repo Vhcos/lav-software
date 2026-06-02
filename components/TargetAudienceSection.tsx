@@ -1,3 +1,5 @@
+import { GlowCard } from "@/components/GlowCard";
+
 const sectors = [
   {
     title: "Construcción e ingeniería",
@@ -58,16 +60,13 @@ export default function TargetAudienceSection() {
 
         <div className="grid gap-5 sm:grid-cols-2">
           {sectors.map((s) => (
-            <div
-              key={s.title}
-              className="rounded-2xl border border-slate-200 bg-white p-7 transition-shadow hover:shadow-md"
-            >
+            <GlowCard key={s.title} light glowColor="blue" className="p-7">
               <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-navy/5 text-navy">
                 {s.icon}
               </div>
               <h3 className="mb-2 font-semibold text-navy">{s.title}</h3>
               <p className="text-sm leading-relaxed text-slate-500">{s.desc}</p>
-            </div>
+            </GlowCard>
           ))}
         </div>
       </div>

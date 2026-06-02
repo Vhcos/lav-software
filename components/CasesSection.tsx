@@ -1,3 +1,5 @@
+import { GlowCard } from "@/components/GlowCard";
+
 const cases = [
   {
     name: "aret3",
@@ -43,10 +45,7 @@ export default function CasesSection() {
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {cases.map((c) => (
-            <div
-              key={c.name}
-              className="rounded-2xl border border-slate-200 bg-white p-7 transition-shadow hover:shadow-md"
-            >
+            <GlowCard key={c.name} light glowColor="blue" className="p-7">
               <div className="mb-5 flex items-start justify-between gap-3">
                 <h3 className="text-xl font-bold text-navy">{c.name}</h3>
                 <span className="shrink-0 rounded-full bg-navy/5 px-3 py-1 text-xs font-medium text-navy/60">
@@ -54,7 +53,7 @@ export default function CasesSection() {
                 </span>
               </div>
               <p className="text-sm leading-relaxed text-slate-500">{c.desc}</p>
-            </div>
+            </GlowCard>
           ))}
 
           {/* Spacer card */}

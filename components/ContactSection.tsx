@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { GlowCard } from "@/components/GlowCard";
 
 const CALENDLY_URL = "https://calendly.com/lav-software";
 
 function CardPanel({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={`rounded-2xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur-sm ${className}`}>
+    <GlowCard glowColor="blue" className={`p-7 ${className}`}>
       {children}
-    </div>
+    </GlowCard>
   );
 }
 
