@@ -16,8 +16,8 @@ const cases = [
   },
   {
     name: "Blizcoms / SuperBet",
-    area: "API · Datos deportivos",
-    desc: "Motor y API de datos deportivos y odds en tiempo real. Integración de múltiples fuentes, procesamiento y entrega de datos a plataformas de apuestas.",
+    area: "API · Datos en tiempo real",
+    desc: "Motor de datos deportivos y API para procesamiento, normalización y entrega de información en tiempo real.",
   },
   {
     name: "IoT Cachimba y Dantino",

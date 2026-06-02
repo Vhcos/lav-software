@@ -16,7 +16,8 @@ export default function Footer() {
             <p className="mb-1 text-lg font-bold text-white">
               LAV <span className="text-accent">Systems</span>
             </p>
-            <p className="mb-3 text-sm text-white/40">Software inteligente a medida para empresas</p>
+            <p className="mb-1 text-sm text-white/50">Software inteligente para resolver problemas reales de negocio.</p>
+            <p className="mb-3 text-xs text-white/30">Software a medida, automatización, datos, IA e IoT para empresas.</p>
             <a
               href="https://lav.software"
               className="text-sm text-white/25 transition-colors hover:text-white/50"

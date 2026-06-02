@@ -1,3 +1,5 @@
+const names = ["Laura", "Agustina", "Valentina", "Victoria"];
+
 export default function OriginSection() {
   return (
     <section id="origen" className="bg-white py-24 md:py-32">
@@ -5,7 +7,8 @@ export default function OriginSection() {
         <p className="mb-3 text-sm font-medium uppercase tracking-widest text-accent">Origen</p>
         <h2 className="mb-10 text-3xl font-bold text-navy sm:text-4xl">El origen de LAV</h2>
 
-        <div className="mx-auto mb-10 flex items-center justify-center gap-3">
+        {/* Letters */}
+        <div className="mx-auto mb-4 flex items-center justify-center gap-3">
           {["L", "A", "V"].map((letter) => (
             <div
               key={letter}
@@ -16,8 +19,13 @@ export default function OriginSection() {
           ))}
         </div>
 
-        <blockquote className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl">
-          LAV nace de{" "}
+        {/* Names */}
+        <p className="mb-10 text-sm text-slate-400">
+          {names.join(" · ")}
+        </p>
+
+        <blockquote className="mb-6 text-lg leading-relaxed text-slate-600 md:text-xl">
+          LAV nace como una marca familiar inspirada en{" "}
           <span className="font-medium text-navy">Laura, Agustina, Valentina y Victoria</span>.
           Antes que cualquier empresa, software o proyecto, ellas son mi mejor creación.
         </blockquote>
@@ -29,7 +37,7 @@ export default function OriginSection() {
         </p>
 
         <div className="mt-12 border-t border-slate-100 pt-10">
-          <p className="text-sm leading-relaxed text-slate-400">
+          <p className="text-sm text-slate-400">
             Criterio empresarial · Capacidad técnica · Experiencia demostrable
           </p>
         </div>
