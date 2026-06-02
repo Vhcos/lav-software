@@ -1,9 +1,12 @@
+import { DottedSurface } from "@/components/DottedSurface";
+
 const before = ["Excel por persona", "WhatsApp operacional", "Correos con adjuntos", "Reportes manuales"];
 const after  = ["Panel unificado", "Alertas automáticas", "Datos en tiempo real", "Reportes al instante"];
 
 export default function Hero() {
   return (
-    <section id="inicio" className="flex min-h-screen items-center bg-navy pt-16">
+    <section id="inicio" className="relative flex min-h-screen items-center bg-navy pt-16">
+      <DottedSurface />
       <div className="mx-auto grid w-full max-w-6xl items-center gap-14 px-6 py-24 md:grid-cols-2 md:py-32">
 
         {/* Copy */}
