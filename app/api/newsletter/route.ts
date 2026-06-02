@@ -3,8 +3,9 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const FROM = "LAV Systems <contacto@lav.software>";
-const TO   = "vhurtado@grupohurtado.cl";
+const AUDIENCE_ID = "00821f58-5245-48dd-8343-9a0abe55c702";
+const FROM        = "LAV Systems <contacto@lav.software>";
+const TO          = "vhurtado@grupohurtado.cl";
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,11 +15,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Email requerido." }, { status: 400 });
     }
 
+    // 1. Add to Resend Audience (the list)
+    await resend.contacts.create({
+      audienceId: AUDIENCE_ID,
+      email,
+      unsubscribed: false,
+    });
+
+    // 2. Notify by email
     await resend.emails.send({
       from: FROM,
       to: TO,
       replyTo: email,
-      subject: `Nueva suscripción newsletter LAV Systems`,
+      subject: "Nueva suscripción newsletter LAV Systems",
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:32px;background:#f8f9fa;border-radius:12px;">
           <h2 style="color:#0c1f35;margin-bottom:8px;">Nueva suscripción al newsletter</h2>
