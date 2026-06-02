@@ -7,7 +7,7 @@ import TargetAudienceSection from "@/components/TargetAudienceSection";
 import ProcessSection from "@/components/ProcessSection";
 import CasesSection from "@/components/CasesSection";
 import OriginSection from "@/components/OriginSection";
-import FinalCTA from "@/components/FinalCTA";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
         <ProcessSection />
         <CasesSection />
         <OriginSection />
-        <FinalCTA />
+        <ContactSection />
       </main>
       <Footer />
     </>
