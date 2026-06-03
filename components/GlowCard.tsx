@@ -82,6 +82,7 @@ export function GlowCard({ children, className = "", glowColor = "blue", light =
     }
 
     const syncPointer = (e: PointerEvent) => {
+      if (e.pointerType === "touch") return;
       if (cardRef.current) {
         cardRef.current.style.setProperty("--x", e.clientX.toFixed(2));
         cardRef.current.style.setProperty("--xp", (e.clientX / window.innerWidth).toFixed(2));
@@ -123,7 +124,7 @@ export function GlowCard({ children, className = "", glowColor = "blue", light =
         backgroundPosition: "50% 50%",
         backgroundAttachment: "fixed",
         border: "var(--border-size) solid var(--backup-border)",
-        touchAction: "none",
+        touchAction: "auto",
       } as React.CSSProperties}
     >
       <div ref={innerRef} data-glow />
