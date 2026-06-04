@@ -69,10 +69,7 @@ export const metadata: Metadata = {
       "Convertimos procesos desordenados, datos dispersos y reportes manuales en sistemas simples, inteligentes y listos para operar.",
   },
   icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
+    icon: [{ url: "/icon.svg", type: "image/svg+xml", sizes: "any" }],
   },
 };
 
