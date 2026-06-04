@@ -9,9 +9,11 @@ export function DottedSurface() {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    const mobile = window.innerWidth < 768;
+
     const SEPARATION = 150;
-    const AMOUNTX = 40;
-    const AMOUNTY = 60;
+    const AMOUNTX = mobile ? 20 : 40;
+    const AMOUNTY = mobile ? 30 : 60;
 
     const scene = new THREE.Scene();
 
@@ -23,8 +25,13 @@ export function DottedSurface() {
     );
     camera.position.set(0, 355, 1220);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: !mobile,
+      powerPreference: mobile ? "low-power" : "default",
+    });
+    // Cap pixel ratio at 2 — prevents 9x GPU load on Retina/iPhone screens
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(
       containerRef.current.clientWidth,
       containerRef.current.clientHeight
@@ -42,7 +49,6 @@ export function DottedSurface() {
           0,
           iy * SEPARATION - (AMOUNTY * SEPARATION) / 2
         );
-        // White dots for dark navy background
         colors.push(1, 1, 1);
       }
     }
@@ -64,8 +70,10 @@ export function DottedSurface() {
 
     let count = 0;
     let animationId: number;
+    let running = true;
 
     const animate = () => {
+      if (!running) return;
       animationId = requestAnimationFrame(animate);
 
       const posAttr = geometry.attributes.position;
@@ -86,6 +94,17 @@ export function DottedSurface() {
       count += 0.06;
     };
 
+    // Pause animation when tab is hidden to save GPU/battery
+    const handleVisibility = () => {
+      if (document.hidden) {
+        running = false;
+        cancelAnimationFrame(animationId);
+      } else {
+        running = true;
+        animate();
+      }
+    };
+
     const handleResize = () => {
       if (!containerRef.current) return;
       camera.aspect =
@@ -98,10 +117,13 @@ export function DottedSurface() {
     };
 
     window.addEventListener("resize", handleResize);
+    document.addEventListener("visibilitychange", handleVisibility);
     animate();
 
     return () => {
+      running = false;
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", handleVisibility);
       cancelAnimationFrame(animationId);
       scene.traverse((obj) => {
         if (obj instanceof THREE.Points) {
