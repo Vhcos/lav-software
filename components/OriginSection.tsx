@@ -43,8 +43,18 @@ export default function OriginSection() {
         </div>
 
         <div className="mt-12 border-t border-slate-100 pt-10">
-          <p className="text-sm text-slate-400">
-            Criterio empresarial · Capacidad técnica · Experiencia demostrable
+          <div className="mb-6 flex flex-wrap justify-center gap-2">
+            {["Criterio empresarial", "Software libre", "IA aplicada", "Producción real"].map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-xs font-medium text-slate-500"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <p className="text-xs italic text-slate-300">
+            Toda marca tiene una historia. Algunas se revelan con el tiempo.
           </p>
         </div>
       </div>

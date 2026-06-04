@@ -54,7 +54,7 @@ function CalendlyPanel() {
       >
         Elegir horario
       </a>
-      <p className="mt-4 text-center text-xs text-white/25">Diagnóstico claro · Propuesta aterrizada</p>
+      <p className="mt-4 text-center text-xs text-white/25">Reunión inicial · Diagnóstico claro · Propuesta aterrizada</p>
     </CardPanel>
   );
 }

@@ -49,7 +49,7 @@ export default function TargetAudienceSection() {
             Para quién trabajamos
           </h2>
           <p className="mb-4 text-base leading-relaxed text-slate-500">
-            Ayudamos a empresas que necesitan ordenar procesos, automatizar tareas y mejorar
+            Trabajamos con empresas en Chile que necesitan ordenar procesos, automatizar tareas y mejorar
             visibilidad sobre su operación.
           </p>
           <p className="text-base leading-relaxed text-slate-500">

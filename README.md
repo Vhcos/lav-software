@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LAV Systems — lav.software
 
-## Getting Started
+Landing page de ventas de **LAV Systems**, consultora de software personalizado con IA para empresas medianas y familiares en Chile.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+| Capa | Tecnología |
+|------|-----------|
+| Framework | Next.js 16.2.7 (App Router) |
+| Lenguaje | TypeScript 5 |
+| UI | React 19 |
+| Estilos | Tailwind CSS v4 |
+| Animaciones | Motion (Framer Motion) |
+| 3D / WebGL | Three.js |
+| Email | Resend API |
+| Deploy | Vercel |
+
+## Requisitos previos
+
+- Node.js 20+
+- npm 10+
+- Cuenta en [Resend](https://resend.com) con dominio `lav.software` verificado
+
+## Configuración del entorno
+
+Crea un archivo `.env.local` en la raíz:
+
+```env
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxx
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Comandos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run dev      # Servidor de desarrollo en http://localhost:3000
+npm run build    # Build de producción
+npm run start    # Servidor de producción
+npm run lint     # Linting con ESLint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Estructura del proyecto
 
-## Learn More
+```
+lav-software/
+├── app/
+│   ├── api/
+│   │   ├── contact/route.ts      # POST /api/contact → email via Resend
+│   │   └── newsletter/route.ts   # POST /api/newsletter → Resend Audience
+│   ├── globals.css               # Tailwind v4 theme + global styles
+│   ├── layout.tsx                # Root layout: metadata, JSON-LD, fonts
+│   ├── opengraph-image.tsx       # OG image dinámica (edge) para redes sociales
+│   ├── robots.ts                 # Genera /robots.txt
+│   ├── sitemap.ts                # Genera /sitemap.xml
+│   └── page.tsx                  # Página principal (SPA con secciones)
+├── components/
+│   ├── Header.tsx                # Navegación sticky + menú móvil
+│   ├── Hero.tsx                  # Portada con DottedSurface 3D
+│   ├── ProblemSection.tsx        # 6 tarjetas de problemas
+│   ├── SolutionSection.tsx       # 4 pasos de la solución
+│   ├── ServicesSection.tsx       # 4 servicios principales
+│   ├── TargetAudienceSection.tsx # 4 industrias objetivo (con referencia Chile)
+│   ├── ProcessSection.tsx        # 8 pasos del proceso
+│   ├── CasesSection.tsx          # 5 casos de estudio
+│   ├── OriginSection.tsx         # Origen profesional + chips + guiño sutil LAV
+│   ├── ContactSection.tsx        # Formulario + newsletter + Calendly
+│   ├── Footer.tsx                # Footer con TextHoverEffect
+│   ├── GlowCard.tsx              # Card con glow border reactivo al cursor
+│   ├── DottedSurface.tsx         # Grilla 3D animada con Three.js
+│   └── TextHoverEffect.tsx       # Texto SVG con reveal gradient
+└── lib/
+    └── utils.ts                  # cn() helper (clsx + tailwind-merge)
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Flujo de la página
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+Header (sticky)
+├── Hero                    → #inicio
+├── ProblemSection
+├── SolutionSection
+├── ServicesSection         → #servicios
+├── TargetAudienceSection
+├── ProcessSection          → #proceso
+├── CasesSection            → #casos
+├── OriginSection           → #origen
+├── ContactSection          → #contacto
+└── Footer
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## API Routes
 
-## Deploy on Vercel
+### `POST /api/contact`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Envía un email de contacto al equipo.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```json
+// Body
+{ "name": "string", "email": "string", "company": "string?", "message": "string" }
+
+// Respuesta 200
+{ "success": true }
+```
+
+### `POST /api/newsletter`
+
+Suscribe un email a la audiencia de Resend y notifica al equipo.
+
+```json
+// Body
+{ "email": "string" }
+
+// Respuesta 200
+{ "success": true }
+```
+
+## Colores del tema
+
+Definidos en `app/globals.css` como variables CSS de Tailwind v4:
+
+| Variable | Valor | Uso |
+|---------|-------|-----|
+| `--color-navy` | `#0c1f35` | Fondo principal |
+| `--color-navy-light` | `#163352` | Fondo de cards |
+| `--color-accent` | `#0891b2` | Cyan de acento |
+| `--color-accent-dark` | `#0e7490` | Cyan oscuro |
+
+## SEO
+
+El proyecto tiene SEO completo configurado en `app/layout.tsx`:
+
+- **Metadata**: title, description, keywords, canonical, robots, Twitter Card, Open Graph
+- **OG Image dinámica**: `app/opengraph-image.tsx` genera el preview visual para LinkedIn, Twitter, WhatsApp e iMessage usando `next/og` (edge runtime)
+- **sitemap.xml**: generado automáticamente en `/sitemap.xml`
+- **robots.txt**: generado automáticamente en `/robots.txt` (permite todo, bloquea `/api/`)
+- **JSON-LD**: schema `Organization` + `WebSite` + `WebPage` inyectado en el `<head>`
+
+## Deploy
+
+El proyecto está configurado para Vercel. La variable de entorno `RESEND_API_KEY` debe estar configurada en el panel de Vercel (Settings → Environment Variables).
+
+```bash
+vercel --prod
+```
