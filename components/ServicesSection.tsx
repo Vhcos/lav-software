@@ -6,7 +6,7 @@ const photos = {
   software:
     "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80&fit=crop",
   automatizacion:
-    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80&fit=crop",
+    "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&q=80&fit=crop",
   iot:
     "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&fit=crop",
 };
