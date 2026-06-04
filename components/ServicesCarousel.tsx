@@ -44,15 +44,23 @@ export function ServicesCarousel({ slides }: { slides: ServiceSlide[] }) {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  const touchStartX = useRef<number | null>(null);
+
+  // Restart the timer on every interaction instead of killing it permanently
+  const restartAutoplay = useCallback(() => {
+    if (autoplayRef.current) clearInterval(autoplayRef.current);
+    autoplayRef.current = setInterval(() => setActiveIndex((p) => (p + 1) % count), 5000);
+  }, [count]);
+
   const handleNext = useCallback(() => {
     setActiveIndex((p) => (p + 1) % count);
-    if (autoplayRef.current) clearInterval(autoplayRef.current);
-  }, [count]);
+    restartAutoplay();
+  }, [count, restartAutoplay]);
 
   const handlePrev = useCallback(() => {
     setActiveIndex((p) => (p - 1 + count) % count);
-    if (autoplayRef.current) clearInterval(autoplayRef.current);
-  }, [count]);
+    restartAutoplay();
+  }, [count, restartAutoplay]);
 
   useEffect(() => {
     autoplayRef.current = setInterval(() => setActiveIndex((p) => (p + 1) % count), 5000);
@@ -67,6 +75,17 @@ export function ServicesCarousel({ slides }: { slides: ServiceSlide[] }) {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [handlePrev, handleNext]);
+
+  const onTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  }, []);
+
+  const onTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 40) delta > 0 ? handleNext() : handlePrev();
+    touchStartX.current = null;
+  }, [handleNext, handlePrev]);
 
   function cardStyle(index: number): React.CSSProperties {
     const gap = calculateGap(containerWidth);
@@ -102,6 +121,8 @@ export function ServicesCarousel({ slides }: { slides: ServiceSlide[] }) {
           ref={containerRef}
           className="relative h-72 w-full md:h-[22rem]"
           style={{ perspective: "1000px" }}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
         >
           {slides.map((slide, index) => (
             <div
