@@ -37,6 +37,15 @@ const sectors = [
       </svg>
     ),
   },
+  {
+    title: "Minería y servicios a la minería",
+    desc: "Trazabilidad de faenas, gestión de contratos, órdenes de trabajo, reportes de turno, alertas operacionales y control documental.",
+    icon: (
+      <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+      </svg>
+    ),
+  },
 ];
 
 export default function TargetAudienceSection() {
@@ -58,7 +67,7 @@ export default function TargetAudienceSection() {
           </p>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {sectors.map((s) => (
             <GlowCard key={s.title} light glowColor="blue" className="p-7">
               <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-navy/5 text-navy">
