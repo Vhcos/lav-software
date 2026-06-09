@@ -2,265 +2,417 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Víctor Hurtado · LAV Systems</title>
+  <meta name="description" content="Fundador de LAV Systems — Software inteligente a medida para empresas en Chile">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    @page { size: 85mm 55mm; margin: 0; }
+    :root {
+      --navy: #0c1f35;
+      --navy-mid: #112840;
+      --navy-light: #163352;
+      --accent: #0891b2;
+      --accent-light: #22d3ee;
+    }
+
+    html, body {
+      min-height: 100%;
+      background: var(--navy);
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: white;
+      -webkit-font-smoothing: antialiased;
+    }
 
     body {
-      background: #d1d5db;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      gap: 32px;
-      min-height: 100vh;
-      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      padding: 0;
     }
 
-    /* 85mm × 55mm */
     .card {
-      width: 85mm;
-      height: 55mm;
-      border-radius: 3.5mm;
-      overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.28);
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    /* ── ANVERSO ─────────────────────────────────── */
-    .front {
-      background: #0c1f35;
-      display: flex;
-    }
-
-    .photo-col {
-      width: 34mm;
-      flex-shrink: 0;
-      overflow: hidden;
-      position: relative;
-    }
-    .photo-col img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 8%;
+      max-width: 420px;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
     }
-    .photo-col::after {
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      padding-top: 56px;
+      padding-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%);
+    }
+
+    .hero::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, transparent 55%, rgba(12,31,53,0.55) 100%);
-    }
-
-    .info-col {
-      flex: 1;
-      padding: 5mm 5mm 4.5mm 4mm;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .brand-name {
-      font-size: 13px;
-      font-weight: 900;
-      color: white;
-      letter-spacing: 0.18em;
-      line-height: 1;
-    }
-    .brand-sub {
-      font-size: 5.5px;
-      color: rgba(255,255,255,0.32);
-      letter-spacing: 0.45em;
-      text-transform: uppercase;
-      margin-top: 1.5px;
-    }
-
-    .person-name {
-      font-size: 11.5px;
-      font-weight: 700;
-      color: white;
-      line-height: 1.2;
-    }
-    .person-title {
-      font-size: 7px;
-      color: #0891b2;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-top: 2.5px;
-    }
-
-    .contact { display: flex; flex-direction: column; gap: 2.5px; }
-    .contact-line {
-      font-size: 6px;
-      color: rgba(255,255,255,0.52);
-      display: flex;
-      align-items: center;
-      gap: 3px;
-    }
-    .ci { color: #0891b2; flex-shrink: 0; }
-
-    .bottom-row {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-top: 3mm;
-    }
-    .web-url {
-      font-size: 7px;
-      color: #0891b2;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
-    .scan-label {
-      font-size: 5px;
-      color: rgba(255,255,255,0.2);
-      margin-bottom: 2px;
-    }
-    .qr-box {
-      width: 15mm;
-      height: 15mm;
-      background: white;
-      border-radius: 1.5mm;
-      padding: 1.2mm;
-    }
-    .qr-box img { width: 100%; height: 100%; display: block; }
-
-    /* accent dot entre foto e info */
-    .dot {
-      position: absolute;
-      width: 3mm; height: 3mm;
-      border-radius: 50%;
-      background: #0891b2;
-      bottom: 4mm;
-      left: 34mm;
+      top: 0; left: 50%;
       transform: translateX(-50%);
-      opacity: 0.55;
-      z-index: 2;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(8,145,178,0.15) 0%, transparent 70%);
+      pointer-events: none;
     }
 
-    /* ── REVERSO ─────────────────────────────────── */
-    .back {
-      background: linear-gradient(140deg, #091e35 0%, #0d2d50 55%, #091e35 100%);
+    .brand-badge {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.35em;
+      color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .photo-wrap {
+      position: relative;
+      width: 104px;
+      height: 104px;
+      margin-bottom: 20px;
+    }
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 8%;
+      border: 2.5px solid var(--accent);
+    }
+    .photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 1px solid rgba(8,145,178,0.2);
+    }
+
+    .name {
+      font-size: 26px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.02em;
+      text-align: center;
+      line-height: 1.15;
+    }
+
+    .title {
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      text-align: center;
+    }
+
+    .tagline {
+      margin-top: 14px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      line-height: 1.6;
+      max-width: 260px;
+    }
+
+    /* ── ACTIONS ── */
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 28px;
+      padding: 0 24px;
+    }
+
+    .action-btn {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .action-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.07);
+      display: flex;
       align-items: center;
       justify-content: center;
+      color: var(--accent-light);
+      transition: background 0.15s, transform 0.1s;
     }
-    .back-glow {
-      position: absolute;
-      width: 55mm; height: 55mm;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(8,145,178,0.14) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .back-lav {
-      font-size: 22px;
-      font-weight: 900;
-      color: white;
-      letter-spacing: 0.25em;
-      position: relative;
-    }
-    .back-systems {
-      font-size: 6.5px;
-      color: rgba(255,255,255,0.32);
-      letter-spacing: 0.55em;
-      text-transform: uppercase;
-      text-align: center;
-      position: relative;
-      margin-top: 1px;
-    }
-    .back-divider {
-      width: 14mm; height: 1px;
-      background: rgba(8,145,178,0.4);
-      margin: 4mm auto;
-      position: relative;
-    }
-    .back-tagline {
-      font-size: 6px;
-      color: rgba(255,255,255,0.2);
-      text-align: center;
-      position: relative;
-      letter-spacing: 0.04em;
-      line-height: 1.7;
+    .action-btn:active .action-icon {
+      background: rgba(8,145,178,0.18);
+      transform: scale(0.93);
     }
 
-    /* ── PRINT ───────────────────────────────────── */
-    @media print {
-      body {
-        background: white;
-        display: block;
-        min-height: auto;
-        padding: 0;
-      }
-      .card {
-        width: 85mm;
-        height: 55mm;
-        border-radius: 0;
-        box-shadow: none;
-        page-break-after: always;
-        break-after: page;
-      }
+    .action-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.35);
+      font-weight: 500;
+      letter-spacing: 0.04em;
     }
+
+    /* ── SAVE BUTTON ── */
+    .save-wrap {
+      padding: 24px 24px 8px;
+    }
+
+    .save-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px 24px;
+      border-radius: 14px;
+      background: var(--accent);
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      letter-spacing: -0.01em;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .save-btn:active {
+      background: #0e7490;
+      transform: scale(0.98);
+    }
+
+    /* ── CONTACT LIST ── */
+    .contact-list {
+      padding: 8px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.05);
+      text-decoration: none;
+      color: white;
+      transition: background 0.15s;
+    }
+    .contact-item:active {
+      background: rgba(8,145,178,0.12);
+    }
+    .contact-item:first-child { border-radius: 14px 14px 4px 4px; }
+    .contact-item:last-child  { border-radius: 4px 4px 14px 14px; }
+    .contact-item:only-child  { border-radius: 14px; }
+
+    .ci-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(8,145,178,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .ci-text { flex: 1; min-width: 0; }
+    .ci-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .ci-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      margin-top: 1px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .ci-arrow {
+      color: rgba(255,255,255,0.2);
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: auto;
+      padding: 20px 24px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-logo {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      color: rgba(255,255,255,0.15);
+      text-transform: uppercase;
+    }
+
+    .footer-link {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      text-decoration: none;
+    }
+    .footer-link:active { color: var(--accent); }
   </style>
 </head>
 <body>
+<div class="card">
 
-<!-- ANVERSO -->
-<div class="card front">
-  <div class="photo-col">
-    <img src="victor.jpg" alt="Víctor Hurtado" />
-  </div>
-  <div class="dot"></div>
-  <div class="info-col">
-    <div>
-      <div class="brand-name">LAV</div>
-      <div class="brand-sub">Systems</div>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="brand-badge">LAV Systems</div>
+
+    <div class="photo-wrap">
+      <img src="victor.jpg" alt="Víctor Hurtado">
     </div>
 
-    <div>
-      <div class="person-name">Víctor Hurtado</div>
-      <div class="person-title">Fundador</div>
-    </div>
+    <div class="name">Víctor Hurtado</div>
+    <div class="title">Fundador</div>
+    <p class="tagline">Software inteligente a medida<br>para empresas en Chile</p>
 
-    <div>
-      <div class="contact">
-        <div class="contact-line">
-          <svg class="ci" width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-          </svg>
-          vhurtado@grupohurtado.cl
-        </div>
-        <div class="contact-line">
-          <svg class="ci" width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <!-- Quick actions -->
+    <div class="actions">
+      <a href="tel:+56964965511" class="action-btn">
+        <div class="action-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.91-.91a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.5v2.42z"/>
           </svg>
-          +569 6496 5511
         </div>
-      </div>
-      <div class="bottom-row">
-        <div>
-          <div class="scan-label">Escanea o visita</div>
-          <div class="web-url">lav.software</div>
+        <span class="action-label">Llamar</span>
+      </a>
+
+      <a href="mailto:vhurtado@grupohurtado.cl" class="action-btn">
+        <div class="action-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
         </div>
-        <div class="qr-box">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https%3A%2F%2Flav.software&margin=3&color=0c1f35" alt="QR" crossorigin="anonymous" />
+        <span class="action-label">Email</span>
+      </a>
+
+      <a href="https://lav.software" class="action-btn">
+        <div class="action-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
         </div>
-      </div>
+        <span class="action-label">Web</span>
+      </a>
+
+      <a href="https://wa.me/56964965511" class="action-btn">
+        <div class="action-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </div>
+        <span class="action-label">WhatsApp</span>
+      </a>
     </div>
   </div>
-</div>
 
-<!-- REVERSO -->
-<div class="card back">
-  <div class="back-glow"></div>
-  <div class="back-lav">LAV</div>
-  <div class="back-systems">Systems</div>
-  <div class="back-divider"></div>
-  <div class="back-tagline">Software inteligente a medida<br>para resolver problemas reales de empresas</div>
-</div>
+  <!-- SAVE CONTACT -->
+  <div class="save-wrap">
+    <a href="/victor.vcf" download class="save-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/>
+      </svg>
+      Guardar contacto
+    </a>
+  </div>
 
+  <!-- CONTACT LIST -->
+  <div class="contact-list">
+    <a href="tel:+56964965511" class="contact-item">
+      <div class="ci-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.91-.91a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.5v2.42z"/>
+        </svg>
+      </div>
+      <div class="ci-text">
+        <div class="ci-label">Teléfono</div>
+        <div class="ci-value">+569 6496 5511</div>
+      </div>
+      <div class="ci-arrow">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </div>
+    </a>
+
+    <a href="mailto:vhurtado@grupohurtado.cl" class="contact-item">
+      <div class="ci-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+      </div>
+      <div class="ci-text">
+        <div class="ci-label">Email</div>
+        <div class="ci-value">vhurtado@grupohurtado.cl</div>
+      </div>
+      <div class="ci-arrow">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </div>
+    </a>
+
+    <a href="https://lav.software" class="contact-item">
+      <div class="ci-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+        </svg>
+      </div>
+      <div class="ci-text">
+        <div class="ci-label">Sitio web</div>
+        <div class="ci-value">lav.software</div>
+      </div>
+      <div class="ci-arrow">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </div>
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-logo">LAV · Systems</div>
+    <a href="https://lav.software" class="footer-link">lav.software</a>
+  </div>
+
+</div>
 </body>
 </html>

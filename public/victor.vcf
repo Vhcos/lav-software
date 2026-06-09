@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Víctor Hurtado
+N:Hurtado;Víctor;;;
+ORG:LAV Systems
+TITLE:Fundador
+TEL;TYPE=CELL:+56964965511
+EMAIL;TYPE=WORK:vhurtado@grupohurtado.cl
+URL:https://lav.software
+NOTE:Software inteligente a medida para empresas en Chile
+END:VCARD
