@@ -18,7 +18,7 @@ export default function Hero() {
 
           <h1 className="mb-6 text-4xl font-bold leading-tight text-white sm:text-5xl">
             Software inteligente a medida para resolver{" "}
-            <span className="text-accent">problemas reales</span> de empresas
+            <span className="text-accent">problemas reales</span> de empresas en Chile
           </h1>
 
           <p className="mb-10 max-w-lg text-base leading-relaxed text-white/60 md:text-lg">
