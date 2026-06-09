@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjeta — Víctor Hurtado · LAV Systems</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #e8eaed;
+      font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    /* ── Print instructions (screen only) ─────────────────── */
+    .instructions {
+      background: white;
+      border-radius: 12px;
+      padding: 20px 28px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .instructions h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0c1f35;
+      margin-bottom: 10px;
+    }
+    .instructions ol {
+      font-size: 13px;
+      color: #4b5563;
+      padding-left: 18px;
+      line-height: 1.8;
+    }
+    .instructions code {
+      background: #f3f4f6;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #0891b2;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 9px 22px;
+      background: #0891b2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    .btn:hover { background: #0e7490; }
+
+    /* ── Cards wrapper ─────────────────────────────────────── */
+    .cards-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    /* ── Business card: 85mm × 55mm ────────────────────────── */
+    .card {
+      width: 85mm;
+      height: 55mm;
+      border-radius: 3.5mm;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    /* ── FRONT ─────────────────────────────────────────────── */
+    .front {
+      background: #0c1f35;
+      display: flex;
+    }
+
+    .photo-col {
+      width: 34mm;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .photo-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 10%;
+    }
+    /* subtle dark fade from photo to info */
+    .photo-col::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, rgba(12,31,53,0.6) 100%);
+    }
+
+    .info-col {
+      flex: 1;
+      padding: 5mm 5mm 4mm 4mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Brand */
+    .brand { line-height: 1; }
+    .brand-name {
+      font-size: 13px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: 0.18em;
+    }
+    .brand-systems {
+      font-size: 5.5px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      margin-top: 1.5px;
+    }
+
+    /* Name + title */
+    .person { margin: auto 0; }
+    .person-name {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.2;
+    }
+    .person-title {
+      font-size: 7px;
+      color: #0891b2;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 2.5px;
+    }
+
+    /* Contact */
+    .contact { display: flex; flex-direction: column; gap: 2.5px; }
+    .contact-line {
+      font-size: 6px;
+      color: rgba(255,255,255,0.55);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      white-space: nowrap;
+    }
+    .contact-icon {
+      color: #0891b2;
+      opacity: 0.8;
+      flex-shrink: 0;
+    }
+
+    /* QR row */
+    .bottom-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: 3mm;
+    }
+    .web-info { display: flex; flex-direction: column; gap: 2px; }
+    .scan-label {
+      font-size: 5px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.04em;
+    }
+    .web-url {
+      font-size: 7px;
+      color: #0891b2;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .qr-box {
+      width: 15mm;
+      height: 15mm;
+      background: white;
+      border-radius: 1.5mm;
+      padding: 1.2mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-box img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* accent dot */
+    .dot {
+      width: 3mm;
+      height: 3mm;
+      border-radius: 50%;
+      background: #0891b2;
+      position: absolute;
+      bottom: 4mm;
+      left: 34mm;
+      transform: translateX(-50%);
+      opacity: 0.6;
+    }
+
+    /* ── BACK ──────────────────────────────────────────────── */
+    .back {
+      background: linear-gradient(140deg, #091e35 0%, #0d2d50 55%, #091e35 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .back-glow {
+      position: absolute;
+      width: 55mm;
+      height: 55mm;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(8,145,178,0.14) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .back-lav {
+      font-size: 22px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: 0.25em;
+      position: relative;
+    }
+    .back-systems {
+      font-size: 6.5px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.55em;
+      text-transform: uppercase;
+      text-align: center;
+      position: relative;
+      margin-top: 1px;
+    }
+    .back-divider {
+      width: 14mm;
+      height: 1px;
+      background: rgba(8,145,178,0.45);
+      margin: 4mm auto;
+      position: relative;
+    }
+    .back-tagline {
+      font-size: 6px;
+      color: rgba(255,255,255,0.22);
+      text-align: center;
+      position: relative;
+      letter-spacing: 0.04em;
+      max-width: 60mm;
+      line-height: 1.6;
+    }
+
+    /* ── PRINT ─────────────────────────────────────────────── */
+    @media print {
+      @page { size: 85mm 55mm; margin: 0; }
+      body { background: white; padding: 0; gap: 0; }
+      .instructions, .card-label, .cards-row { display: block; }
+      .instructions { display: none; }
+      .card-label { display: none; }
+      .cards-row { display: block; }
+      .card {
+        width: 85mm;
+        height: 55mm;
+        border-radius: 0;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Instructions (screen only) -->
+<div class="instructions">
+  <h2>Tarjeta de presentación · Víctor Hurtado</h2>
+  <ol>
+    <li>Guarda tu foto como <code>victor.jpg</code> en la carpeta <code>public/</code> del proyecto</li>
+    <li>Abre este archivo en Chrome o Safari</li>
+    <li>Haz clic en "Imprimir / Guardar PDF"</li>
+    <li>En el diálogo de impresión: selecciona <strong>Guardar como PDF</strong> y configura el tamaño en <strong>85 × 55 mm</strong> (o "tarjeta de presentación")</li>
+    <li>Imprime ambas caras: primero el Anverso, luego el Reverso dando vuelta la hoja</li>
+  </ol>
+  <button class="btn" onclick="window.print()">Imprimir / Guardar PDF</button>
+</div>
+
+<div class="cards-row">
+
+  <!-- ANVERSO -->
+  <div>
+    <p class="card-label">Anverso</p>
+    <div class="card front">
+      <div class="photo-col">
+        <img src="victor.jpg" alt="Víctor Hurtado" />
+      </div>
+      <div class="dot"></div>
+      <div class="info-col">
+        <div class="brand">
+          <div class="brand-name">LAV</div>
+          <div class="brand-systems">Systems</div>
+        </div>
+
+        <div class="person">
+          <div class="person-name">Víctor Hurtado</div>
+          <div class="person-title">Fundador</div>
+        </div>
+
+        <div>
+          <div class="contact">
+            <div class="contact-line">
+              <svg class="contact-icon" width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              vhurtado@grupohurtado.cl
+            </div>
+            <div class="contact-line">
+              <svg class="contact-icon" width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.91-.91a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.5v2.42z"/>
+              </svg>
+              +569 6496 5511
+            </div>
+          </div>
+
+          <div class="bottom-row">
+            <div class="web-info">
+              <span class="scan-label">Escanea o visita</span>
+              <span class="web-url">lav.software</span>
+            </div>
+            <div class="qr-box">
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https%3A%2F%2Flav.software&margin=3&color=0c1f35"
+                alt="QR lav.software"
+                crossorigin="anonymous"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVERSO -->
+  <div>
+    <p class="card-label">Reverso</p>
+    <div class="card back">
+      <div class="back-glow"></div>
+      <div class="back-lav">LAV</div>
+      <div class="back-systems">Systems</div>
+      <div class="back-divider"></div>
+      <div class="back-tagline">Software inteligente a medida<br>para resolver problemas reales de empresas</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
