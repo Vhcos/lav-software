@@ -1,17 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Casos", href: "#casos" },
-  { label: "Origen", href: "#origen" },
-  { label: "Contacto", href: "#contacto" },
-];
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const p = isHome ? "" : "/";
+
+  const navLinks = [
+    { label: "Inicio",    href: isHome ? "#inicio"    : "/" },
+    { label: "Servicios", href: `${p}#servicios` },
+    { label: "Proceso",   href: `${p}#proceso` },
+    { label: "Casos",     href: `${p}#casos` },
+    { label: "Origen",    href: `${p}#origen` },
+    { label: "Contacto",  href: `${p}#contacto` },
+  ];
+
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -28,7 +33,7 @@ export default function Header() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <a href="#inicio" className="flex items-center gap-2.5">
+        <a href={isHome ? "#inicio" : "/"} className="flex items-center gap-2.5">
           <img src="/favicon.svg" alt="LAV Systems" className="h-8 w-8" />
           <div className="flex flex-col leading-none">
             <span className="text-lg font-bold tracking-tight text-navy">
@@ -54,7 +59,7 @@ export default function Header() {
         </ul>
 
         <a
-          href="#contacto"
+          href={`${p}#contacto`}
           className="hidden h-9 items-center rounded-lg bg-navy px-5 text-sm font-medium text-white transition-colors hover:bg-navy-light md:inline-flex"
         >
           Agendar diagnóstico
@@ -91,7 +96,7 @@ export default function Header() {
             ))}
           </ul>
           <a
-            href="#contacto"
+            href={`${p}#contacto`}
             onClick={() => setOpen(false)}
             className="flex h-10 w-full items-center justify-center rounded-lg bg-navy text-sm font-medium text-white"
           >
