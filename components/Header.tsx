@@ -10,10 +10,10 @@ export default function Header() {
 
   const navLinks = [
     { label: "Inicio",      href: isHome ? "#inicio" : "/" },
-    { label: "Plataforma",  href: `${p}#plataforma` },
-    { label: "Agentes",     href: `${p}#agentes` },
-    { label: "Casos",       href: `${p}#casos` },
-    { label: "Fundadores",  href: `${p}#fundadores` },
+    { label: "Plataforma",  href: "/plataforma" },
+    { label: "Agentes",     href: "/agentes" },
+    { label: "Casos",       href: "/casos" },
+    { label: "Fundadores",  href: "/programa-fundadores" },
     { label: "Contacto",    href: `${p}#contacto` },
   ];
 

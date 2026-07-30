@@ -29,7 +29,7 @@ const controls = [
 
 export default function SecuritySection() {
   return (
-    <section className="bg-white py-24 md:py-32">
+    <section id="seguridad" className="bg-white py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-16 max-w-2xl">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-accent">Seguridad y control</p>

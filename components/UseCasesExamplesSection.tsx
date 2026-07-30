@@ -25,7 +25,7 @@ const examples = [
 
 export default function UseCasesExamplesSection() {
   return (
-    <section className="bg-navy py-24 md:py-32">
+    <section id="ejemplos" className="bg-navy py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-16 max-w-2xl">
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-accent">Ejemplos de uso</p>

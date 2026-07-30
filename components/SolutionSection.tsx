@@ -63,6 +63,9 @@ export default function SolutionSection() {
         <p className="mt-12 max-w-2xl text-lg font-semibold text-white">
           La plataforma hace confiable el trabajo. Los agentes hacen más simple y productiva la interacción.
         </p>
+        <a href="/plataforma" className="mt-4 inline-block text-sm text-accent transition-colors hover:text-accent-dark">
+          Conocer la plataforma en detalle →
+        </a>
       </div>
     </section>
   );

@@ -22,12 +22,17 @@ export default function FoundersProgramSection() {
                 Estamos seleccionando un grupo limitado de pymes para implementar LAV de manera
                 guiada, adaptar los agentes a sus procesos y medir resultados reales.
               </p>
-              <a
-                href="#contacto"
-                className="inline-flex h-12 items-center rounded-xl bg-accent px-7 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors hover:bg-accent-dark"
-              >
-                Quiero ordenar mi empresa
-              </a>
+              <div className="flex flex-wrap items-center gap-5">
+                <a
+                  href="#contacto"
+                  className="inline-flex h-12 items-center rounded-xl bg-accent px-7 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors hover:bg-accent-dark"
+                >
+                  Quiero ordenar mi empresa
+                </a>
+                <a href="/programa-fundadores" className="text-sm text-white/50 transition-colors hover:text-white/80">
+                  Conocer el programa completo →
+                </a>
+              </div>
             </div>
 
             <ul className="space-y-4">

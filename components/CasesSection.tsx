@@ -90,6 +90,9 @@ export default function CasesSection() {
           Esta experiencia en datos, software, automatización, finanzas, control, operaciones, IoT
           e IA aplicada es la base sobre la que construimos LAV.
         </p>
+        <a href="/casos" className="mt-4 inline-block text-sm text-accent transition-colors hover:text-accent-dark">
+          Ver todos los casos en detalle →
+        </a>
       </div>
     </section>
   );

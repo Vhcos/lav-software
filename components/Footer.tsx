@@ -1,11 +1,11 @@
 import { TextHoverEffect } from "@/components/TextHoverEffect";
 
 const links = [
-  { label: "Plataforma", href: "#plataforma" },
-  { label: "Agentes", href: "#agentes" },
-  { label: "Casos", href: "#casos" },
-  { label: "Fundadores", href: "#fundadores" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Plataforma", href: "/plataforma" },
+  { label: "Agentes", href: "/agentes" },
+  { label: "Casos", href: "/casos" },
+  { label: "Fundadores", href: "/programa-fundadores" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 export default function Footer() {

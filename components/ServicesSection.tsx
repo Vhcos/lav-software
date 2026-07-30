@@ -159,6 +159,10 @@ export default function ServicesSection() {
             </GlowCard>
           ))}
         </div>
+
+        <a href="/agentes" className="mt-10 inline-block text-sm text-accent transition-colors hover:text-accent-dark">
+          Conocer a los agentes en detalle →
+        </a>
       </div>
     </section>
   );
