@@ -42,7 +42,7 @@ function CalendlyPanel() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
         </svg>
       </div>
-      <h3 className="mb-2 font-semibold text-white">Agendar diagnóstico</h3>
+      <h3 className="mb-2 font-semibold text-white">Agendar diagnóstico empresarial</h3>
       <p className="mb-6 text-sm leading-relaxed text-white/45">
         Reunión de 30 minutos para entender tu problema, revisar procesos y diseñar una propuesta clara. Sin compromiso.
       </p>
@@ -206,11 +206,11 @@ export default function ContactSection() {
         <div className="mb-14 text-center">
           <p className="mb-4 text-sm font-medium uppercase tracking-widest text-accent">Contacto</p>
           <h2 className="mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
-            ¿Qué proceso de tu empresa te está<br className="hidden sm:block" /> quitando tiempo, dinero o control?
+            ¿Qué parte de tu empresa todavía depende de Excel,<br className="hidden sm:block" /> correos y trabajo manual?
           </h2>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/50 md:text-lg">
-            Partamos con una conversación de diagnóstico. Si el problema se puede resolver con
-            software, automatización, datos o IA, diseñamos una solución clara, simple y lista para operar.
+            En una reunión de diagnóstico identificamos los procesos que más tiempo, control o dinero
+            están consumiendo, y evaluamos cómo integrarlos en un sistema acompañado por agentes especializados.
           </p>
         </div>
 

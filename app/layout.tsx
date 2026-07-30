@@ -21,24 +21,24 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "LAV Systems | Software a medida con IA para empresas en Chile",
+    default: "LAV Systems | El agente empresarial para las pymes",
     template: "%s | LAV Systems",
   },
   description:
-    "Creamos software a medida con IA para empresas en Chile que necesitan ordenar procesos, automatizar tareas, integrar datos y mejorar reportes.",
+    "LAV conecta contabilidad, tesorería, remuneraciones y operaciones en una plataforma empresarial coordinada por agentes especializados, para pymes chilenas.",
   keywords: [
-    "software a medida Chile",
-    "software con IA",
+    "agente empresarial para pymes",
+    "agentes de IA para empresas",
+    "plataforma empresarial",
+    "software para pymes",
+    "automatización para pymes",
+    "sistema de gestión para pymes",
+    "contabilidad asistida por IA",
+    "tesorería para pymes",
+    "remuneraciones asistidas",
     "automatización de procesos",
-    "dashboards empresariales",
-    "integración de datos",
-    "IoT industrial",
-    "software para constructoras",
-    "software para minería",
-    "sistemas internos para empresas",
-    "software para empresas familiares",
-    "diagnóstico IA empresas",
-    "automatización con inteligencia artificial",
+    "software empresarial Chile",
+    "inteligencia artificial para empresas chilenas",
     "Chile",
     "Santiago",
   ],
@@ -60,9 +60,9 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   openGraph: {
-    title: "LAV Systems | Software a medida con IA para empresas en Chile",
+    title: "LAV Systems | El agente empresarial para las pymes",
     description:
-      "Convertimos procesos desordenados, datos dispersos y reportes manuales en sistemas simples, inteligentes y listos para operar.",
+      "Tu empresa en un solo sistema. Un equipo de agentes trabajando contigo: contabilidad, tesorería, remuneraciones y operaciones.",
     url: siteUrl,
     siteName: "LAV Systems",
     locale: "es_CL",
@@ -70,9 +70,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LAV Systems | Software a medida con IA para empresas en Chile",
+    title: "LAV Systems | El agente empresarial para las pymes",
     description:
-      "Convertimos procesos desordenados, datos dispersos y reportes manuales en sistemas simples, inteligentes y listos para operar.",
+      "Tu empresa en un solo sistema. Un equipo de agentes trabajando contigo: contabilidad, tesorería, remuneraciones y operaciones.",
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml", sizes: "any" }],
@@ -95,7 +95,7 @@ const jsonLd = {
         height: 512,
       },
       description:
-        "Consultora chilena de software a medida con IA para empresas medianas. Especializados en automatización de procesos, dashboards, sistemas internos e integración de datos.",
+        "Plataforma empresarial agéntica para pymes chilenas. LAV conecta contabilidad, tesorería, remuneraciones, operaciones y documentos, coordinados por un agente empresarial y un equipo de agentes especializados.",
       email: "contacto@lav.software",
       foundingDate: "2024",
       address: {
@@ -116,13 +116,13 @@ const jsonLd = {
         url: `${siteUrl}/#contacto`,
       },
       knowsAbout: [
-        "Software a medida",
-        "Automatización de procesos con IA",
-        "Inteligencia artificial empresarial",
-        "Integración de datos",
-        "IoT industrial",
-        "Dashboards empresariales",
-        "Sistemas internos",
+        "Plataforma empresarial agéntica",
+        "Agentes de IA para empresas",
+        "Contabilidad asistida por IA",
+        "Tesorería para pymes",
+        "Remuneraciones asistidas",
+        "Automatización de procesos",
+        "Software empresarial Chile",
       ],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
@@ -132,36 +132,27 @@ const jsonLd = {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "Diagnóstico IA 360",
+              name: "Diagnóstico empresarial",
               description:
-                "Diagnóstico completo del estado operacional de la empresa: procesos, datos, sistemas y oportunidades de automatización con IA.",
+                "Diagnóstico del estado operacional de la empresa: procesos, datos, sistemas y oportunidades de integrar agentes especializados.",
             },
           },
           {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "Backoffice Autónomo",
+              name: "Plataforma empresarial LAV",
               description:
-                "Sistema interno a medida que reemplaza Excel, correos y WhatsApp con flujos automatizados y datos centralizados.",
+                "Plataforma modular con contabilidad, tesorería, remuneraciones, operaciones y documentos, coordinada por agentes especializados.",
             },
           },
           {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: "Operación en Terreno Inteligente",
+              name: "Programa de Empresas Fundadoras",
               description:
-                "Sistema móvil para captura de datos en terreno, órdenes de trabajo, reportes de turno y trazabilidad operacional.",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Copiloto Operacional con IA",
-              description:
-                "Asistente con IA integrado a los sistemas de la empresa para consultas, alertas y soporte a la toma de decisiones.",
+                "Implementación guiada de LAV para un grupo limitado de pymes, con configuración según el negocio y soporte directo.",
             },
           },
         ],
@@ -182,7 +173,7 @@ const jsonLd = {
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
       name: "LAV Systems",
-      description: "Software inteligente a medida para empresas en Chile",
+      description: "El agente empresarial para las pymes chilenas",
       publisher: { "@id": `${siteUrl}/#organization` },
       inLanguage: "es-CL",
     },
@@ -190,9 +181,9 @@ const jsonLd = {
       "@type": "WebPage",
       "@id": `${siteUrl}/#webpage`,
       url: siteUrl,
-      name: "LAV Systems | Software a medida con IA para empresas en Chile",
+      name: "LAV Systems | El agente empresarial para las pymes",
       description:
-        "Desarrollamos software a medida con IA para empresas que necesitan ordenar procesos, automatizar tareas, integrar datos y mejorar su toma de decisiones.",
+        "LAV conecta contabilidad, tesorería, remuneraciones, operaciones y datos en una plataforma empresarial coordinada por agentes especializados.",
       isPartOf: { "@id": `${siteUrl}/#website` },
       about: { "@id": `${siteUrl}/#organization` },
       inLanguage: "es-CL",
@@ -203,34 +194,42 @@ const jsonLd = {
       mainEntity: [
         {
           "@type": "Question",
-          name: "¿Qué tipo de empresas trabajan con LAV Systems?",
+          name: "¿Qué es LAV?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Trabajamos con empresas medianas en Chile, especialmente en construcción, servicios industriales, minería, empresas familiares y finanzas. Empresas que operan con Excel, correos y procesos manuales que necesitan ordenar su operación.",
+            text: "LAV es una plataforma empresarial agéntica para pymes. Conecta contabilidad, tesorería, remuneraciones, operaciones y documentos, y los pone al servicio de un agente empresarial que coordina agentes especializados.",
           },
         },
         {
           "@type": "Question",
-          name: "¿Cuánto cuesta desarrollar software a medida?",
+          name: "¿Qué tipo de empresas trabajan con LAV?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "El costo depende del alcance. Un Diagnóstico IA 360 parte desde USD 2.500. Un sistema de backoffice a medida va entre USD 8.000 y USD 25.000. Trabajamos con precio fijo por entregable, no por hora.",
+            text: "Pymes y empresas medianas en Chile, especialmente empresas familiares, constructoras, servicios industriales y minería: empresas que hoy operan con Excel, correos, WhatsApp y varias plataformas separadas.",
           },
         },
         {
           "@type": "Question",
-          name: "¿Cuánto tiempo toma desarrollar un sistema a medida?",
+          name: "¿LAV reemplaza a mi contador o a mi equipo de remuneraciones?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Un diagnóstico tarda 1–2 semanas. Un sistema de backoffice a medida entre 4 y 8 semanas. Empezamos siempre con un diagnóstico para definir alcance y prioridades antes de desarrollar.",
+            text: "No. El agente contable y el agente de remuneraciones trabajan junto a tu contador y tu equipo, no en su reemplazo. Las decisiones sensibles siguen bajo control y validación humana.",
           },
         },
         {
           "@type": "Question",
-          name: "¿Qué es el Diagnóstico IA 360?",
+          name: "¿Cuánto cuesta implementar LAV?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Es una evaluación completa del estado operacional de tu empresa: mapeamos procesos, identificamos datos dispersos, detectamos cuellos de botella y entregamos un plan concreto de qué automatizar con software e IA para generar el mayor impacto.",
+            text: "El costo depende del alcance. Un Diagnóstico empresarial parte desde USD 2.500. La implementación de la plataforma va entre USD 8.000 y USD 25.000, con precio fijo por entregable, no por hora.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Qué es el Programa de Empresas Fundadoras?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Es un grupo limitado de pymes con las que implementamos LAV de forma guiada, adaptando los agentes a sus procesos reales, con soporte directo y condiciones comerciales iniciales.",
           },
         },
       ],

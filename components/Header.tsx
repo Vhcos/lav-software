@@ -9,12 +9,12 @@ export default function Header() {
   const p = isHome ? "" : "/";
 
   const navLinks = [
-    { label: "Inicio",    href: isHome ? "#inicio"    : "/" },
-    { label: "Servicios", href: `${p}#servicios` },
-    { label: "Proceso",   href: `${p}#proceso` },
-    { label: "Casos",     href: `${p}#casos` },
-    { label: "Origen",    href: `${p}#origen` },
-    { label: "Contacto",  href: `${p}#contacto` },
+    { label: "Inicio",      href: isHome ? "#inicio" : "/" },
+    { label: "Plataforma",  href: `${p}#plataforma` },
+    { label: "Agentes",     href: `${p}#agentes` },
+    { label: "Casos",       href: `${p}#casos` },
+    { label: "Fundadores",  href: `${p}#fundadores` },
+    { label: "Contacto",    href: `${p}#contacto` },
   ];
 
   const [open, setOpen] = useState(false);
@@ -62,7 +62,7 @@ export default function Header() {
           href={`${p}#contacto`}
           className="hidden h-9 items-center rounded-lg bg-navy px-5 text-sm font-medium text-white transition-colors hover:bg-navy-light md:inline-flex"
         >
-          Agendar diagnóstico
+          Agendar diagnóstico empresarial
         </a>
 
         <button
@@ -100,7 +100,7 @@ export default function Header() {
             onClick={() => setOpen(false)}
             className="flex h-10 w-full items-center justify-center rounded-lg bg-navy text-sm font-medium text-white"
           >
-            Agendar diagnóstico
+            Agendar diagnóstico empresarial
           </a>
         </div>
       )}

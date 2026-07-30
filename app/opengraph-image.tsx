@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "LAV Systems — Software inteligente a medida para empresas en Chile";
+export const alt = "LAV Systems — El agente empresarial para las pymes";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -76,7 +76,7 @@ export default function OpengraphImage() {
               textTransform: "uppercase",
             }}
           >
-            Software · Automatización · IA · IoT
+            Plataforma empresarial agéntica · Para pymes chilenas
           </span>
         </div>
 
@@ -91,9 +91,9 @@ export default function OpengraphImage() {
             maxWidth: "880px",
           }}
         >
-          Software inteligente{" "}
-          <span style={{ color: "#0891b2" }}>a medida</span>
-          {" "}para resolver problemas reales de empresas
+          El{" "}
+          <span style={{ color: "#0891b2" }}>agente empresarial</span>
+          {" "}para las pymes
         </div>
 
         {/* Subtext */}
@@ -106,7 +106,7 @@ export default function OpengraphImage() {
             lineHeight: 1.5,
           }}
         >
-          Reemplazamos Excel, correos y WhatsApp con sistemas simples, automatizados y listos para operar.
+          Conecta contabilidad, tesorería, remuneraciones, operaciones y datos en una sola plataforma, coordinada por agentes especializados.
         </div>
 
         {/* Bottom bar */}

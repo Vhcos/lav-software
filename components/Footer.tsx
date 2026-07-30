@@ -1,10 +1,10 @@
 import { TextHoverEffect } from "@/components/TextHoverEffect";
 
 const links = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proceso", href: "#proceso" },
+  { label: "Plataforma", href: "#plataforma" },
+  { label: "Agentes", href: "#agentes" },
   { label: "Casos", href: "#casos" },
-  { label: "Origen", href: "#origen" },
+  { label: "Fundadores", href: "#fundadores" },
   { label: "Contacto", href: "#contacto" },
 ];
 
@@ -31,10 +31,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <p className="mb-1 text-sm text-white/50">
-              Software inteligente para resolver problemas reales de negocio.
+              Tu empresa en un solo sistema. Un equipo de agentes trabajando contigo.
             </p>
             <p className="mb-3 text-xs text-white/30">
-              Software a medida, automatización, datos, IA e IoT para empresas.
+              El agente empresarial para las pymes: contabilidad, tesorería, remuneraciones,
+              operaciones y documentos, coordinados por agentes especializados.
             </p>
             <a
               href="https://lav.software"
