@@ -3,6 +3,7 @@ import { TextHoverEffect } from "@/components/TextHoverEffect";
 const links = [
   { label: "Plataforma", href: "/plataforma" },
   { label: "Agentes", href: "/agentes" },
+  { label: "Soluciones", href: "/soluciones" },
   { label: "Casos", href: "/casos" },
   { label: "Fundadores", href: "/programa-fundadores" },
   { label: "Contacto", href: "/#contacto" },

@@ -12,6 +12,7 @@ export default function Header() {
     { label: "Inicio",      href: isHome ? "#inicio" : "/" },
     { label: "Plataforma",  href: "/plataforma" },
     { label: "Agentes",     href: "/agentes" },
+    { label: "Soluciones",  href: "/soluciones" },
     { label: "Casos",       href: "/casos" },
     { label: "Fundadores",  href: "/programa-fundadores" },
     { label: "Contacto",    href: `${p}#contacto` },
