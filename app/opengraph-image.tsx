@@ -83,6 +83,8 @@ export default function OpengraphImage() {
         {/* Heading */}
         <div
           style={{
+            display: "flex",
+            flexWrap: "wrap",
             fontSize: "64px",
             fontWeight: "800",
             color: "white",
@@ -91,9 +93,9 @@ export default function OpengraphImage() {
             maxWidth: "880px",
           }}
         >
-          El{" "}
+          <span>El&nbsp;</span>
           <span style={{ color: "#0891b2" }}>agente empresarial</span>
-          {" "}para las pymes
+          <span>&nbsp;para las pymes</span>
         </div>
 
         {/* Subtext */}
