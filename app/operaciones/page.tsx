@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Operaciones para pymes | LAV Systems",
+    description:
+      "Reportes diarios consolidados y un agente operacional que se adapta a tu negocio durante la implementación guiada.",
+  },
 };
 
 const jsonLd = {

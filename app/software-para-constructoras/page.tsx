@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agente empresarial para Constructoras | LAV Systems",
+    description:
+      "Contabilidad, tesorería y documentos conectados, con un agente que consolida el avance de cada obra.",
+  },
 };
 
 const jsonLd = {

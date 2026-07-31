@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agente de gerencia | LAV Systems",
+    description:
+      "Impulsado por Casiani: consolida indicadores, explica qué cambió y prepara reportes para gerencia.",
+  },
 };
 
 const jsonLd = {

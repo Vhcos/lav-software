@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Software y agentes de IA para pymes | LAV Systems",
+    description:
+      "La plataforma empresarial agéntica para pymes chilenas: contabilidad, tesorería, remuneraciones y operaciones en un solo sistema.",
+  },
 };
 
 const jsonLd = {

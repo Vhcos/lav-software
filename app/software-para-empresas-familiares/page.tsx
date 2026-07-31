@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agente empresarial para Empresas Familiares | LAV Systems",
+    description:
+      "Contabilidad, tesorería y remuneraciones consolidadas, con un agente de gerencia que da visibilidad del negocio.",
+  },
 };
 
 const jsonLd = {

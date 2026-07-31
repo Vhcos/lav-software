@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Diagnóstico empresarial | LAV Systems",
+    description:
+      "Mapeamos tus procesos, datos y prioridades, e identificamos qué agentes tienen mayor impacto en tu empresa.",
+  },
 };
 
 const jsonLd = {

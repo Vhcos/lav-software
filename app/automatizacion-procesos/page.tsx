@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Automatización de procesos para pymes | LAV Systems",
+    description:
+      "Agentes que clasifican documentos, concilian movimientos y revisan novedades sobre tus datos reales.",
+  },
 };
 
 const jsonLd = {

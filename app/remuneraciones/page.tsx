@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Remuneraciones asistidas | LAV Systems",
+    description:
+      "Cálculo de remuneraciones y liquidaciones, con un agente que revisa novedades y deja trazabilidad de cada revisión.",
+  },
 };
 
 const jsonLd = {

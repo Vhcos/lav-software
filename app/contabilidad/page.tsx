@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contabilidad asistida por IA | LAV Systems",
+    description:
+      "Ledger contable en vivo, sincronización con el SII y un agente contable que revisa, clasifica y explica.",
+  },
 };
 
 const jsonLd = {

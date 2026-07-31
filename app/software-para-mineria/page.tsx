@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agente empresarial para Minería | LAV Systems",
+    description:
+      "Contabilidad, tesorería y reportes de faena conectados, con agentes que avisan a tiempo.",
+  },
 };
 
 const jsonLd = {

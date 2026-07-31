@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Programa de Empresas Fundadoras | LAV Systems",
+    description:
+      "Un grupo limitado de pymes implementa LAV de manera guiada, adapta los agentes a sus procesos y mide resultados reales.",
+  },
 };
 
 const jsonLd = {

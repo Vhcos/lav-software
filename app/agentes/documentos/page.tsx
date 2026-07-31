@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agente documental | LAV Systems",
+    description:
+      "Clasifica documentos, extrae información y detecta vencimientos. En activación con las empresas fundadoras.",
+  },
 };
 
 const jsonLd = {

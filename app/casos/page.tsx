@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Casos | LAV Systems",
+    description:
+      "La experiencia real detrás de LAV: aret3, SEEConsulting, Casia, Blizcoms/SuperBet e IoT Cachimba y Dantino.",
+  },
 };
 
 const jsonLd = {

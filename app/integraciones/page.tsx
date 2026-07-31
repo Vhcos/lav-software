@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Integraciones | LAV Systems",
+    description:
+      "LAV se conecta con el SII, tus bancos, Previred y las planillas y sistemas que ya usas.",
+  },
 };
 
 const jsonLd = {

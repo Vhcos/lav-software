@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tesorería para pymes | LAV Systems",
+    description:
+      "Caja, cartolas y flujo de caja proyectado, con un agente de tesorería que genera alertas antes de que el problema te alcance.",
+  },
 };
 
 const jsonLd = {

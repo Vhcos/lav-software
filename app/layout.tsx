@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -218,14 +219,6 @@ const jsonLd = {
         },
         {
           "@type": "Question",
-          name: "¿Cuánto cuesta implementar LAV?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "El costo depende del alcance. Un Diagnóstico empresarial parte desde USD 2.500. La implementación de la plataforma va entre USD 8.000 y USD 25.000, con precio fijo por entregable, no por hora.",
-          },
-        },
-        {
-          "@type": "Question",
           name: "¿Qué es el Programa de Empresas Fundadoras?",
           acceptedAnswer: {
             "@type": "Answer",
@@ -253,7 +246,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

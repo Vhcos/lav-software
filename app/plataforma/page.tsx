@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Plataforma empresarial LAV | LAV Systems",
+    description:
+      "Datos confiables, procesos estructurados y módulos empresariales. La base sobre la que trabajan los agentes de LAV.",
+  },
 };
 
 const jsonLd = {

@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agentes de LAV | LAV Systems",
+    description:
+      "El agente empresarial de LAV coordina a un equipo de agentes especializados que trabajan sobre módulos, datos y permisos reales de tu empresa.",
+  },
 };
 
 const jsonLd = {

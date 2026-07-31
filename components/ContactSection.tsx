@@ -14,15 +14,16 @@ function CardPanel({ children, className = "" }: { children: React.ReactNode; cl
 }
 
 function InputField({
-  label, type = "text", value, onChange, placeholder, required = false,
+  id, label, type = "text", value, onChange, placeholder, required = false,
 }: {
-  label: string; type?: string; value: string;
+  id: string; label: string; type?: string; value: string;
   onChange: (v: string) => void; placeholder?: string; required?: boolean;
 }) {
   return (
     <div>
-      <label className="mb-1.5 block text-xs font-medium text-white/50">{label}</label>
+      <label htmlFor={id} className="mb-1.5 block text-xs font-medium text-white/50">{label}</label>
       <input
+        id={id}
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
@@ -109,12 +110,13 @@ function ContactFormPanel() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          <InputField label="Nombre" value={name} onChange={setName} placeholder="Tu nombre" required />
-          <InputField label="Empresa" value={company} onChange={setCompany} placeholder="Nombre de la empresa" />
-          <InputField label="Email" type="email" value={email} onChange={setEmail} placeholder="tu@empresa.cl" required />
+          <InputField id="contact-name" label="Nombre" value={name} onChange={setName} placeholder="Tu nombre" required />
+          <InputField id="contact-company" label="Empresa" value={company} onChange={setCompany} placeholder="Nombre de la empresa" />
+          <InputField id="contact-email" label="Email" type="email" value={email} onChange={setEmail} placeholder="tu@empresa.cl" required />
           <div>
-            <label className="mb-1.5 block text-xs font-medium text-white/50">Mensaje</label>
+            <label htmlFor="contact-message" className="mb-1.5 block text-xs font-medium text-white/50">Mensaje</label>
             <textarea
+              id="contact-message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="¿Qué proceso te está quitando tiempo o control?"
@@ -183,7 +185,7 @@ function NewsletterPanel() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          <InputField label="Tu email" type="email" value={email} onChange={setEmail} placeholder="tu@empresa.cl" required />
+          <InputField id="newsletter-email" label="Tu email" type="email" value={email} onChange={setEmail} placeholder="tu@empresa.cl" required />
           {error && <p className="text-xs text-red-400">{error}</p>}
           <button
             type="submit"

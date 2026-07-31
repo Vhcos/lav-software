@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     locale: "es_CL",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Soluciones | LAV Systems",
+    description:
+      "Contabilidad, tesorería, remuneraciones, operaciones, agentes especializados e integraciones, en una sola plataforma.",
+  },
 };
 
 const jsonLd = {
