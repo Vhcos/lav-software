@@ -6,7 +6,13 @@ export type AnalyticsEvent =
   | "contact_form_submitted"
   | "contact_form_failed"
   | "newsletter_subscribed"
-  | "founders_program_clicked";
+  | "founders_program_clicked"
+  | "investor_page_viewed"
+  | "investor_teaser_clicked"
+  | "investor_meeting_clicked"
+  | "investor_form_started"
+  | "investor_form_submitted"
+  | "investor_form_failed";
 
 export function trackEvent(
   event: AnalyticsEvent,

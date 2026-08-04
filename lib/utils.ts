@@ -19,3 +19,15 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export function isValidEmail(value: string) {
   return EMAIL_PATTERN.test(value);
 }
+
+export function isValidHttpUrl(value: string) {
+  return /^https?:\/\/.+/i.test(value);
+}
+
+export function sanitizeEmailHeader(value: string, maxLength = 180) {
+  return value
+    .replace(/[\r\n]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, maxLength);
+}

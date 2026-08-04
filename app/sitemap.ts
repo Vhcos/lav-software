@@ -24,5 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/software-para-constructoras`,             lastModified: now, changeFrequency: "monthly",  priority: 0.8 },
     { url: `${base}/software-para-mineria`,                   lastModified: now, changeFrequency: "monthly",  priority: 0.8 },
     { url: `${base}/software-para-empresas-familiares`,       lastModified: now, changeFrequency: "monthly",  priority: 0.8 },
+    { url: `${base}/inversionistas`,                          lastModified: now, changeFrequency: "monthly",  priority: 0.5 },
   ];
 }
