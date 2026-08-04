@@ -3,50 +3,13 @@
 import { useRef, useState } from "react";
 import { GlowCard } from "@/components/GlowCard";
 import { trackEvent } from "@/lib/analytics";
-
-const ORGANIZATION_TYPES = [
-  "Fondo de venture capital",
-  "Family office",
-  "Inversionista ángel",
-  "Corporate venture capital",
-  "Aceleradora o incubadora",
-  "Institución pública",
-  "Asesor o intermediario",
-  "Otro",
-];
-
-const INVESTMENT_RANGES = [
-  "Menos de USD 100.000",
-  "USD 100.000–250.000",
-  "USD 250.000–500.000",
-  "USD 500.000–1.000.000",
-  "Más de USD 1.000.000",
-  "Prefiero no indicarlo",
-];
-
-const INVESTMENT_STAGES = [
-  "Pre-seed",
-  "Seed",
-  "Serie A",
-  "Growth",
-  "Etapa flexible",
-  "No aplica",
-];
-
-const GEOGRAPHIES = [
-  "Chile",
-  "Latinoamérica",
-  "Estados Unidos",
-  "Europa",
-  "Global",
-  "Otro",
-];
+import { ORGANIZATION_TYPES, INVESTMENT_RANGES, INVESTMENT_STAGES, GEOGRAPHIES } from "@/lib/investor-options";
 
 function InputField({
-  id, label, type = "text", value, onChange, onFocus, placeholder, required = false,
+  id, label, type = "text", value, onChange, placeholder, required = false,
 }: {
   id: string; label: string; type?: string; value: string;
-  onChange: (v: string) => void; onFocus?: () => void; placeholder?: string; required?: boolean;
+  onChange: (v: string) => void; placeholder?: string; required?: boolean;
 }) {
   return (
     <div>
@@ -56,7 +19,6 @@ function InputField({
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        onFocus={onFocus}
         placeholder={placeholder}
         required={required}
         className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-white/20 outline-none transition focus:border-accent/50 focus:ring-1 focus:ring-accent/30"
@@ -66,10 +28,10 @@ function InputField({
 }
 
 function SelectField({
-  id, label, value, onChange, onFocus, options,
+  id, label, value, onChange, options,
 }: {
   id: string; label: string; value: string;
-  onChange: (v: string) => void; onFocus?: () => void; options: string[];
+  onChange: (v: string) => void; options: readonly string[];
 }) {
   return (
     <div>
@@ -78,7 +40,6 @@ function SelectField({
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        onFocus={onFocus}
         className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none transition focus:border-accent/50 focus:ring-1 focus:ring-accent/30"
       >
         <option value="" className="bg-navy">Selecciona…</option>
@@ -134,11 +95,11 @@ export function InvestorForm() {
       });
       if (!res.ok) throw new Error();
       setSent(true);
-      trackEvent("investor_form_submitted", {
-        organization_type: organizationType || undefined,
-        investment_stage: investmentStage || undefined,
-        geography: geography || undefined,
-      } as Record<string, string>);
+      const submittedProps: Record<string, string> = {};
+      if (organizationType) submittedProps.organization_type = organizationType;
+      if (investmentStage) submittedProps.investment_stage = investmentStage;
+      if (geography) submittedProps.geography = geography;
+      trackEvent("investor_form_submitted", submittedProps);
     } catch {
       setError("No se pudo enviar. Intenta nuevamente.");
       trackEvent("investor_form_failed");
@@ -167,26 +128,31 @@ export function InvestorForm() {
 
   return (
     <GlowCard glowColor="blue" className="p-8">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+      <form
+        onSubmit={handleSubmit}
+        onFocusCapture={handleFirstInteraction}
+        onChangeCapture={handleFirstInteraction}
+        className="flex flex-col gap-8"
+      >
         <div>
           <h3 className="mb-4 text-sm font-medium uppercase tracking-widest text-accent">Sobre ti y tu organización</h3>
           <div className="grid gap-3 sm:grid-cols-2">
-            <InputField id="investor-first-name" label="Nombre" value={firstName} onChange={setFirstName} onFocus={handleFirstInteraction} placeholder="Tu nombre" required />
-            <InputField id="investor-last-name" label="Apellido" value={lastName} onChange={setLastName} onFocus={handleFirstInteraction} placeholder="Tu apellido" required />
-            <InputField id="investor-email" label="Email" type="email" value={email} onChange={setEmail} onFocus={handleFirstInteraction} placeholder="tu@fondo.com" required />
-            <InputField id="investor-organization" label="Organización" value={organization} onChange={setOrganization} onFocus={handleFirstInteraction} placeholder="Nombre de tu organización" />
-            <InputField id="investor-role" label="Cargo" value={role} onChange={setRole} onFocus={handleFirstInteraction} placeholder="Tu cargo" />
-            <SelectField id="investor-org-type" label="Tipo de organización" value={organizationType} onChange={setOrganizationType} onFocus={handleFirstInteraction} options={ORGANIZATION_TYPES} />
-            <InputField id="investor-website" label="Sitio web" value={website} onChange={setWebsite} onFocus={handleFirstInteraction} placeholder="https://" />
+            <InputField id="investor-first-name" label="Nombre" value={firstName} onChange={setFirstName} placeholder="Tu nombre" required />
+            <InputField id="investor-last-name" label="Apellido" value={lastName} onChange={setLastName} placeholder="Tu apellido" required />
+            <InputField id="investor-email" label="Email" type="email" value={email} onChange={setEmail} placeholder="tu@fondo.com" required />
+            <InputField id="investor-organization" label="Organización" value={organization} onChange={setOrganization} placeholder="Nombre de tu organización" />
+            <InputField id="investor-role" label="Cargo" value={role} onChange={setRole} placeholder="Tu cargo" />
+            <SelectField id="investor-org-type" label="Tipo de organización" value={organizationType} onChange={setOrganizationType} options={ORGANIZATION_TYPES} />
+            <InputField id="investor-website" label="Sitio web" value={website} onChange={setWebsite} placeholder="https://" />
           </div>
         </div>
 
         <div>
           <h3 className="mb-4 text-sm font-medium uppercase tracking-widest text-accent">Tu perfil de inversión</h3>
           <div className="grid gap-3 sm:grid-cols-2">
-            <SelectField id="investor-range" label="Rango de inversión habitual" value={investmentRange} onChange={setInvestmentRange} onFocus={handleFirstInteraction} options={INVESTMENT_RANGES} />
-            <SelectField id="investor-stage" label="Etapa de inversión" value={investmentStage} onChange={setInvestmentStage} onFocus={handleFirstInteraction} options={INVESTMENT_STAGES} />
-            <SelectField id="investor-geography" label="Foco geográfico" value={geography} onChange={setGeography} onFocus={handleFirstInteraction} options={GEOGRAPHIES} />
+            <SelectField id="investor-range" label="Rango de inversión habitual" value={investmentRange} onChange={setInvestmentRange} options={INVESTMENT_RANGES} />
+            <SelectField id="investor-stage" label="Etapa de inversión" value={investmentStage} onChange={setInvestmentStage} options={INVESTMENT_STAGES} />
+            <SelectField id="investor-geography" label="Foco geográfico" value={geography} onChange={setGeography} options={GEOGRAPHIES} />
           </div>
           <div className="mt-3">
             <label htmlFor="investor-thesis" className="mb-1.5 block text-xs font-medium text-white/50">Tesis o sectores de interés</label>
@@ -194,7 +160,6 @@ export function InvestorForm() {
               id="investor-thesis"
               value={thesis}
               onChange={(e) => setThesis(e.target.value)}
-              onFocus={handleFirstInteraction}
               placeholder="¿Qué tipo de oportunidades sueles buscar?"
               rows={2}
               className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-white/20 outline-none transition focus:border-accent/50 focus:ring-1 focus:ring-accent/30"
@@ -206,7 +171,6 @@ export function InvestorForm() {
               id="investor-message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              onFocus={handleFirstInteraction}
               placeholder="Cuéntanos qué te interesa conversar"
               rows={3}
               className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-white/20 outline-none transition focus:border-accent/50 focus:ring-1 focus:ring-accent/30"

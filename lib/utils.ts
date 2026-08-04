@@ -23,3 +23,11 @@ export function isValidEmail(value: string) {
 export function isValidHttpUrl(value: string) {
   return /^https?:\/\/.+/i.test(value);
 }
+
+export function sanitizeEmailHeader(value: string, maxLength = 180) {
+  return value
+    .replace(/[\r\n]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, maxLength);
+}

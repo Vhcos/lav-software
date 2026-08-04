@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { escapeHtml, isValidEmail, isValidHttpUrl } from "@/lib/utils";
+import { escapeHtml, isValidEmail, isValidHttpUrl, sanitizeEmailHeader } from "@/lib/utils";
+import { ORGANIZATION_TYPES, INVESTMENT_RANGES, INVESTMENT_STAGES, GEOGRAPHIES } from "@/lib/investor-options";
 
 const FROM = "LAV Systems <contacto@lav.software>";
 const TO   = "vhurtado@grupohurtado.cl";
@@ -39,6 +40,12 @@ function readOptionalString(value: unknown, maxLength: number): string | null {
   return trimmed;
 }
 
+function readOptionalEnum(value: unknown, maxLength: number, allowed: readonly string[]): string | null {
+  const result = readOptionalString(value, maxLength);
+  if (result === null || result === "") return result;
+  return allowed.includes(result) ? result : null;
+}
+
 export async function POST(req: NextRequest) {
   let body: unknown;
   try {
@@ -58,11 +65,11 @@ export async function POST(req: NextRequest) {
   const emailRaw = readRequiredString(data.email, LIMITS.email);
   const organization = readOptionalString(data.organization, LIMITS.organization);
   const role = readOptionalString(data.role, LIMITS.role);
-  const organizationType = readOptionalString(data.organizationType, LIMITS.organizationType);
+  const organizationType = readOptionalEnum(data.organizationType, LIMITS.organizationType, ORGANIZATION_TYPES);
   const websiteRaw = readOptionalString(data.website, LIMITS.website);
-  const investmentRange = readOptionalString(data.investmentRange, LIMITS.investmentRange);
-  const investmentStage = readOptionalString(data.investmentStage, LIMITS.investmentStage);
-  const geography = readOptionalString(data.geography, LIMITS.geography);
+  const investmentRange = readOptionalEnum(data.investmentRange, LIMITS.investmentRange, INVESTMENT_RANGES);
+  const investmentStage = readOptionalEnum(data.investmentStage, LIMITS.investmentStage, INVESTMENT_STAGES);
+  const geography = readOptionalEnum(data.geography, LIMITS.geography, GEOGRAPHIES);
   const thesis = readOptionalString(data.thesis, LIMITS.thesis);
   const message = readOptionalString(data.message, LIMITS.message);
   const consent = data.consent === true;
@@ -106,11 +113,14 @@ export async function POST(req: NextRequest) {
     const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
     const receivedAt = new Date().toISOString();
 
+    const subjectSource = organization || `${firstName} ${lastName}`;
+    const subject = `Nuevo contacto de inversión LAV — ${sanitizeEmailHeader(subjectSource)}`;
+
     await resend.emails.send({
       from: FROM,
       to: TO,
       replyTo: email,
-      subject: `Nuevo contacto de inversión LAV — ${safeOrganization || `${safeFirstName} ${safeLastName}`}`,
+      subject,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:32px;background:#f8f9fa;border-radius:12px;">
           <h2 style="color:#0c1f35;margin-bottom:8px;">Nuevo contacto de inversión</h2>
