@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { escapeHtml } from "@/lib/utils";
 
 const AUDIENCE_ID = "00821f58-5245-48dd-8343-9a0abe55c702";
 const FROM        = "LAV Systems <contacto@lav.software>";
@@ -22,6 +23,8 @@ export async function POST(req: NextRequest) {
     });
 
     // 2. Notify by email
+    const safeEmail = escapeHtml(email);
+
     await resend.emails.send({
       from: FROM,
       to: TO,
@@ -34,10 +37,10 @@ export async function POST(req: NextRequest) {
           <div style="padding:20px;background:#fff;border-radius:8px;border-left:3px solid #0891b2;">
             <p style="color:#64748b;font-size:12px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em;">Email suscrito</p>
             <p style="color:#0891b2;font-size:16px;font-weight:600;margin:0;">
-              <a href="mailto:${email}" style="color:#0891b2;">${email}</a>
+              <a href="mailto:${safeEmail}" style="color:#0891b2;">${safeEmail}</a>
             </p>
           </div>
-          <p style="margin-top:24px;color:#94a3b8;font-size:12px;">lav.software · Software inteligente a medida para empresas</p>
+          <p style="margin-top:24px;color:#94a3b8;font-size:12px;">lav.software · Plataforma empresarial modular con agentes de IA especializados</p>
         </div>
       `,
     });

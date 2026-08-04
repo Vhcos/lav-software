@@ -112,7 +112,7 @@ export default function OperacionesPage() {
           <div className="mx-auto max-w-4xl px-6">
             <div className="mb-6 flex items-center gap-3">
               <h2 className="text-2xl font-bold text-white sm:text-3xl">El agente operacional</h2>
-              <span className="rounded-full bg-navy/40 border border-white/10 px-2.5 py-1 text-[11px] font-medium text-white/60">Programa Fundadoras</span>
+              <span className="rounded-full bg-navy/40 border border-white/10 px-2.5 py-1 text-[11px] font-medium text-white/60">En implementación guiada</span>
             </div>
             <ul className="mb-6 grid gap-3 sm:grid-cols-2">
               {agente.map((t) => (

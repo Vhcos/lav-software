@@ -1,4 +1,5 @@
 import { DottedSurface } from "@/components/DottedSurface";
+import { TrackedLink } from "@/components/TrackedLink";
 
 const agentPills = ["Gerencia", "Contabilidad", "Tesorería", "Remuneraciones", "Operaciones", "Documentos"];
 
@@ -30,12 +31,13 @@ export default function Hero() {
           </p>
 
           <div className="mb-8 flex flex-wrap gap-4">
-            <a
+            <TrackedLink
               href="#contacto"
+              event="diagnostic_cta_clicked"
               className="inline-flex h-12 items-center rounded-xl bg-accent px-7 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors hover:bg-accent-dark"
             >
               Agendar diagnóstico empresarial
-            </a>
+            </TrackedLink>
             <a
               href="#como-funciona"
               className="inline-flex h-12 items-center rounded-xl border border-white/15 px-7 text-sm text-white/70 transition-colors hover:bg-white/5"

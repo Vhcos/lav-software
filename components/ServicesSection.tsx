@@ -1,10 +1,12 @@
 import { GlowCard } from "@/components/GlowCard";
 
+type Badge = "Validado en operación" | "Disponible en piloto" | "En implementación guiada";
+
 type Agent = {
   code: string;
   title: string;
   tagline?: string;
-  badge: "En uso real" | "Programa Fundadoras";
+  badge: Badge;
   problema: string;
   tareas: string[];
   beneficio: string;
@@ -16,7 +18,7 @@ const agents: Agent[] = [
     code: "GE",
     title: "Agente de gerencia",
     tagline: "Impulsado por Casiani",
-    badge: "En uso real",
+    badge: "Validado en operación",
     problema: "Decides sin una vista consolidada del negocio.",
     tareas: [
       "Consolida indicadores de toda la empresa",
@@ -30,7 +32,7 @@ const agents: Agent[] = [
   {
     code: "CO",
     title: "Agente contable",
-    badge: "En uso real",
+    badge: "Disponible en piloto",
     problema: "Los cierres se atrasan y los errores de clasificación cuestan tiempo y plata.",
     tareas: [
       "Revisa documentos tributarios",
@@ -45,7 +47,7 @@ const agents: Agent[] = [
   {
     code: "TE",
     title: "Agente de tesorería",
-    badge: "En uso real",
+    badge: "Disponible en piloto",
     problema: "Las sorpresas de caja llegan cuando ya es tarde para actuar.",
     tareas: [
       "Revisa caja y controla compromisos de pago",
@@ -59,7 +61,7 @@ const agents: Agent[] = [
   {
     code: "RE",
     title: "Agente de remuneraciones",
-    badge: "En uso real",
+    badge: "Disponible en piloto",
     problema: "El cálculo mensual consume días y cualquier error genera reclamos.",
     tareas: [
       "Revisa novedades del mes",
@@ -74,7 +76,7 @@ const agents: Agent[] = [
   {
     code: "OP",
     title: "Agente operacional",
-    badge: "Programa Fundadoras",
+    badge: "En implementación guiada",
     problema: "Los reportes de terreno llegan tarde o incompletos.",
     tareas: [
       "Consolida reportes diarios",
@@ -89,7 +91,7 @@ const agents: Agent[] = [
   {
     code: "DO",
     title: "Agente documental",
-    badge: "Programa Fundadoras",
+    badge: "En implementación guiada",
     problema: "Los documentos se acumulan sin que nadie sepa qué falta o qué está por vencer.",
     tareas: [
       "Recibe y clasifica documentos",
@@ -132,9 +134,11 @@ export default function ServicesSection() {
                 </div>
                 <span
                   className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] font-medium ${
-                    a.badge === "En uso real"
+                    a.badge === "Validado en operación"
                       ? "bg-accent/10 text-accent-dark"
-                      : "bg-navy/5 text-navy/60"
+                      : a.badge === "Disponible en piloto"
+                        ? "bg-navy/10 text-navy/70"
+                        : "bg-navy/5 text-navy/60"
                   }`}
                 >
                   {a.badge}

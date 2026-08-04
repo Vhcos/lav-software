@@ -81,7 +81,7 @@ export default function AgenteDocumentalPage() {
               El agente documental recibe, clasifica y extrae información de tus documentos, y te
               avisa qué está por vencer.
             </p>
-            <span className="mb-8 inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/60">Programa Fundadoras</span>
+            <span className="mb-8 inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/60">En implementación guiada</span>
             <div>
               <a href="/#contacto" className="inline-flex h-12 items-center rounded-xl bg-accent px-8 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors hover:bg-accent-dark">
                 Agendar diagnóstico empresarial

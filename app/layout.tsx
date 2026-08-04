@@ -127,7 +127,7 @@ const jsonLd = {
       ],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
-        name: "Servicios LAV Systems",
+        name: "Soluciones LAV Systems",
         itemListElement: [
           {
             "@type": "Offer",
@@ -167,7 +167,7 @@ const jsonLd = {
       jobTitle: "Fundador",
       worksFor: { "@id": `${siteUrl}/#organization` },
       url: `${siteUrl}/card.html`,
-      email: "vhurtado@grupohurtado.cl",
+      email: "contacto@lav.software",
     },
     {
       "@type": "WebSite",
@@ -188,44 +188,6 @@ const jsonLd = {
       isPartOf: { "@id": `${siteUrl}/#website` },
       about: { "@id": `${siteUrl}/#organization` },
       inLanguage: "es-CL",
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${siteUrl}/#faq`,
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "¿Qué es LAV?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "LAV es una plataforma empresarial agéntica para pymes. Conecta contabilidad, tesorería, remuneraciones, operaciones y documentos, y los pone al servicio de un agente empresarial que coordina agentes especializados.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "¿Qué tipo de empresas trabajan con LAV?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Pymes y empresas medianas en Chile, especialmente empresas familiares, constructoras, servicios industriales y minería: empresas que hoy operan con Excel, correos, WhatsApp y varias plataformas separadas.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "¿LAV reemplaza a mi contador o a mi equipo de remuneraciones?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "No. El agente contable y el agente de remuneraciones trabajan junto a tu contador y tu equipo, no en su reemplazo. Las decisiones sensibles siguen bajo control y validación humana.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "¿Qué es el Programa de Empresas Fundadoras?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Es un grupo limitado de pymes con las que implementamos LAV de forma guiada, adaptando los agentes a sus procesos reales, con soporte directo y condiciones comerciales iniciales.",
-          },
-        },
-      ],
     },
   ],
 };

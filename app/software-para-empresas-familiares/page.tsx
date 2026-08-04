@@ -59,10 +59,10 @@ const symptoms = [
 ];
 
 const soluciones = [
-  { title: "Contabilidad conectada al SII", desc: "Ledger real y documentos tributarios sincronizados, con un agente que revisa y clasifica.", badge: "En uso real" },
-  { title: "Tesorería y cobranza", desc: "Cuentas por cobrar consolidadas, con alertas de vencimiento — sin que nadie tenga que recordar revisar el Excel.", badge: "En uso real" },
-  { title: "Remuneraciones", desc: "Cálculo, liquidaciones y Previred, con validación humana en cada cierre.", badge: "En uso real" },
-  { title: "Agente de gerencia", desc: "Impulsado por Casiani: consolida indicadores de todas las áreas y explica qué cambió, sin que dependas de la persona que siempre lo sabe.", badge: "En uso real" },
+  { title: "Contabilidad conectada al SII", desc: "Ledger real y documentos tributarios sincronizados, con un agente que revisa y clasifica.", badge: "Disponible en piloto" },
+  { title: "Tesorería y cobranza", desc: "Cuentas por cobrar consolidadas, con alertas de vencimiento — sin que nadie tenga que recordar revisar el Excel.", badge: "Disponible en piloto" },
+  { title: "Remuneraciones", desc: "Cálculo, liquidaciones y Previred, con validación humana en cada cierre.", badge: "Disponible en piloto" },
+  { title: "Agente de gerencia", desc: "Impulsado por Casiani: consolida indicadores de todas las áreas y explica qué cambió, sin que dependas de la persona que siempre lo sabe.", badge: "Validado en operación" },
 ];
 
 const related = [
