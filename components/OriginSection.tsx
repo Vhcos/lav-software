@@ -35,16 +35,16 @@ export default function OriginSection() {
             tomadas con poca visibilidad.
           </p>
           <p>
-            Hoy la inteligencia artificial, el código abierto y la infraestructura moderna permiten construir
-            plataformas empresariales configurables de forma más rápida, eficiente y accesible. LAV Systems nace para
-            aprovechar ese cambio y convertir dolores concretos de negocio en un sistema modular, con agentes
-            especializados, listo para operar.
+            Hoy la inteligencia artificial, la infraestructura en la nube y las nuevas herramientas de desarrollo
+            permiten construir plataformas empresariales configurables de forma más rápida, eficiente y accesible.
+            LAV Systems nace para aprovechar ese cambio y convertir dolores concretos de negocio en un sistema
+            modular, con agentes especializados y listo para operar.
           </p>
         </div>
 
         <div className="mt-12 border-t border-slate-100 pt-10">
           <div className="mb-6 flex flex-wrap justify-center gap-2">
-            {["Criterio empresarial", "Código abierto", "IA aplicada", "Producción real"].map((tag) => (
+            {["Criterio empresarial", "Plataforma modular", "IA aplicada", "Producción real"].map((tag) => (
               <span
                 key={tag}
                 className="rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-xs font-medium text-slate-500"

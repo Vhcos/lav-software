@@ -1,20 +1,38 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { escapeHtml } from "@/lib/utils";
+import { escapeHtml, isValidEmail } from "@/lib/utils";
 
 const AUDIENCE_ID = "00821f58-5245-48dd-8343-9a0abe55c702";
 const FROM        = "LAV Systems <contacto@lav.software>";
 const TO          = "vhurtado@grupohurtado.cl";
+const EMAIL_MAX_LENGTH = 254;
 
 export async function POST(req: NextRequest) {
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Solicitud inválida." }, { status: 400 });
+  }
+
+  if (typeof body !== "object" || body === null) {
+    return NextResponse.json({ error: "Solicitud inválida." }, { status: 400 });
+  }
+
+  const { email: emailRaw } = body as Record<string, unknown>;
+
+  if (typeof emailRaw !== "string") {
+    return NextResponse.json({ error: "Email inválido." }, { status: 400 });
+  }
+
+  const email = emailRaw.trim().toLowerCase();
+
+  if (!email || email.length > EMAIL_MAX_LENGTH || !isValidEmail(email)) {
+    return NextResponse.json({ error: "Email inválido." }, { status: 400 });
+  }
+
   const resend = new Resend(process.env.RESEND_API_KEY);
   try {
-    const { email } = await req.json();
-
-    if (!email) {
-      return NextResponse.json({ error: "Email requerido." }, { status: 400 });
-    }
-
     // 1. Add to Resend Audience (the list)
     await resend.contacts.create({
       audienceId: AUDIENCE_ID,
@@ -47,7 +65,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("[newsletter]", err);
+    console.error("[newsletter] subscribe failed", err instanceof Error ? err.message : err);
     return NextResponse.json({ error: "Error al suscribir." }, { status: 500 });
   }
 }

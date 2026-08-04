@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# capturas de verificación manual (Playwright MCP) — no forman parte del proyecto
+/.playwright-mcp/
+/verify-*.png
+/home-*.png
+/page-*.png
