@@ -10,8 +10,7 @@ const links = [
   { label: "Contacto", href: "/#contacto" },
 ];
 
-// La página de inversionistas todavía no existe — activar cuando esté publicada.
-const SHOW_INVESTORS_LINK = false;
+const SHOW_INVESTORS_LINK = true;
 const INVESTORS_HREF = "/inversionistas";
 
 // Sin perfiles sociales reales configurados todavía: dejar vacío en vez de enlazar a URLs genéricas.
