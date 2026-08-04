@@ -59,10 +59,10 @@ const symptoms = [
 ];
 
 const agentes = [
-  { title: "Agente contable", desc: "Revisa documentos tributarios y propone clasificaciones automáticamente.", badge: "En uso real" },
-  { title: "Agente de tesorería", desc: "Ayuda a conciliar movimientos bancarios contra tus documentos.", badge: "En uso real" },
-  { title: "Agente de remuneraciones", desc: "Revisa novedades del mes y detecta datos faltantes antes del cierre.", badge: "En uso real" },
-  { title: "Agente de gerencia", desc: "Consolida indicadores y prepara reportes, sin que nadie los arme a mano.", badge: "En uso real" },
+  { title: "Agente contable", desc: "Revisa documentos tributarios y propone clasificaciones automáticamente.", badge: "Disponible en piloto" },
+  { title: "Agente de tesorería", desc: "Ayuda a conciliar movimientos bancarios contra tus documentos.", badge: "Disponible en piloto" },
+  { title: "Agente de remuneraciones", desc: "Revisa novedades del mes y detecta datos faltantes antes del cierre.", badge: "Disponible en piloto" },
+  { title: "Agente de gerencia", desc: "Consolida indicadores y prepara reportes, sin que nadie los arme a mano.", badge: "Validado en operación" },
 ];
 
 const related = [

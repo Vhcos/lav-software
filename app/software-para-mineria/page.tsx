@@ -59,11 +59,11 @@ const symptoms = [
 ];
 
 const soluciones = [
-  { title: "Contabilidad conectada al SII", desc: "Ledger real y documentos tributarios sincronizados, con un agente que revisa y clasifica.", badge: "En uso real" },
-  { title: "Tesorería y flujo de caja", desc: "Cuentas por cobrar a mandantes y por pagar a proveedores, con alertas de vencimiento.", badge: "En uso real" },
-  { title: "Remuneraciones de terreno", desc: "Cálculo, liquidaciones y Previred, con validación humana antes de cada cierre.", badge: "En uso real" },
-  { title: "Reportes de faena", desc: "El agente operacional consolida reportes de turno, adaptado a cómo opera tu faena.", badge: "Programa Fundadoras" },
-  { title: "Control documental", desc: "El agente documental organiza procedimientos, permisos y certificaciones, y avisa qué vence.", badge: "Programa Fundadoras" },
+  { title: "Contabilidad conectada al SII", desc: "Ledger real y documentos tributarios sincronizados, con un agente que revisa y clasifica.", badge: "Disponible en piloto" },
+  { title: "Tesorería y flujo de caja", desc: "Cuentas por cobrar a mandantes y por pagar a proveedores, con alertas de vencimiento.", badge: "Disponible en piloto" },
+  { title: "Remuneraciones de terreno", desc: "Cálculo, liquidaciones y Previred, con validación humana antes de cada cierre.", badge: "Disponible en piloto" },
+  { title: "Reportes de faena", desc: "El agente operacional consolida reportes de turno, adaptado a cómo opera tu faena.", badge: "En implementación guiada" },
+  { title: "Control documental", desc: "El agente documental organiza procedimientos, permisos y certificaciones, y avisa qué vence.", badge: "En implementación guiada" },
 ];
 
 const related = [

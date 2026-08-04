@@ -43,10 +43,10 @@ const jsonLd = {
 };
 
 const dominios = [
-  { title: "Contabilidad", href: "/contabilidad", desc: "Ledger en vivo, SII sincronizado y un agente que revisa y explica.", badge: "En uso real" },
-  { title: "Tesorería", href: "/tesoreria", desc: "Caja, conciliación y flujo proyectado, con alertas antes de tiempo.", badge: "En uso real" },
-  { title: "Remuneraciones", href: "/remuneraciones", desc: "Cálculo, liquidaciones y Previred, con validación humana.", badge: "En uso real" },
-  { title: "Operaciones", href: "/operaciones", desc: "Reportes diarios consolidados, adaptados a tu negocio.", badge: "Programa Fundadoras" },
+  { title: "Contabilidad", href: "/contabilidad", desc: "Ledger en vivo, SII sincronizado y un agente que revisa y explica.", badge: "Disponible en piloto" },
+  { title: "Tesorería", href: "/tesoreria", desc: "Caja, conciliación y flujo proyectado, con alertas antes de tiempo.", badge: "Disponible en piloto" },
+  { title: "Remuneraciones", href: "/remuneraciones", desc: "Cálculo, liquidaciones y Previred, con validación humana.", badge: "Disponible en piloto" },
+  { title: "Operaciones", href: "/operaciones", desc: "Reportes diarios consolidados, adaptados a tu negocio.", badge: "En implementación guiada" },
 ];
 
 const otros = [

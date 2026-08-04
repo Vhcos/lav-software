@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Header() {
   const pathname = usePathname();
@@ -41,7 +42,7 @@ export default function Header() {
               LAV <span className="text-accent">Systems</span>
             </span>
             <span className="text-[10px] font-medium tracking-widest text-slate-400 uppercase">
-              Software Libre
+              Plataforma empresarial agéntica
             </span>
           </div>
         </a>
@@ -61,6 +62,7 @@ export default function Header() {
 
         <a
           href={`${p}#contacto`}
+          onClick={() => trackEvent("diagnostic_cta_clicked")}
           className="hidden h-9 items-center rounded-lg bg-navy px-5 text-sm font-medium text-white transition-colors hover:bg-navy-light md:inline-flex"
         >
           Agendar diagnóstico empresarial
@@ -98,7 +100,10 @@ export default function Header() {
           </ul>
           <a
             href={`${p}#contacto`}
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              trackEvent("diagnostic_cta_clicked");
+              setOpen(false);
+            }}
             className="flex h-10 w-full items-center justify-center rounded-lg bg-navy text-sm font-medium text-white"
           >
             Agendar diagnóstico empresarial

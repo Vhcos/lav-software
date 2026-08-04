@@ -59,11 +59,11 @@ const symptoms = [
 ];
 
 const soluciones = [
-  { title: "Contabilidad conectada al SII", desc: "Ledger real y documentos tributarios sincronizados, con un agente que revisa y clasifica.", badge: "En uso real" },
-  { title: "Tesorería y flujo de caja", desc: "Cuentas por cobrar y por pagar consolidadas, con alertas antes de que falte caja para la obra.", badge: "En uso real" },
-  { title: "Remuneraciones de cuadrillas", desc: "Cálculo, liquidaciones y Previred para tu equipo, con validación humana en cada cierre.", badge: "En uso real" },
-  { title: "Reportes de obra", desc: "El agente operacional consolida el avance diario, adaptado a cómo reporta tu obra.", badge: "Programa Fundadoras" },
-  { title: "Documentos y certificaciones", desc: "El agente documental clasifica planos, permisos y certificaciones, y avisa qué está por vencer.", badge: "Programa Fundadoras" },
+  { title: "Contabilidad conectada al SII", desc: "Ledger real y documentos tributarios sincronizados, con un agente que revisa y clasifica.", badge: "Disponible en piloto" },
+  { title: "Tesorería y flujo de caja", desc: "Cuentas por cobrar y por pagar consolidadas, con alertas antes de que falte caja para la obra.", badge: "Disponible en piloto" },
+  { title: "Remuneraciones de cuadrillas", desc: "Cálculo, liquidaciones y Previred para tu equipo, con validación humana en cada cierre.", badge: "Disponible en piloto" },
+  { title: "Reportes de obra", desc: "El agente operacional consolida el avance diario, adaptado a cómo reporta tu obra.", badge: "En implementación guiada" },
+  { title: "Documentos y certificaciones", desc: "El agente documental clasifica planos, permisos y certificaciones, y avisa qué está por vencer.", badge: "En implementación guiada" },
 ];
 
 const related = [

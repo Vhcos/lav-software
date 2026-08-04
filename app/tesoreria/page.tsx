@@ -95,7 +95,7 @@ export default function TesoreriaPage() {
           <div className="mx-auto max-w-4xl px-6">
             <h2 className="mb-3 text-2xl font-bold text-navy sm:text-3xl">El módulo</h2>
             <p className="mb-10 text-base leading-relaxed text-slate-500">
-              Tesorería en uso real, conectada a tu contabilidad — no una planilla de caja aparte.
+              Tesorería disponible en piloto, conectada a tu contabilidad — no una planilla de caja aparte.
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
               {modulo.map((m) => (
@@ -112,7 +112,7 @@ export default function TesoreriaPage() {
           <div className="mx-auto max-w-4xl px-6">
             <div className="mb-6 flex items-center gap-3">
               <h2 className="text-2xl font-bold text-white sm:text-3xl">El agente de tesorería</h2>
-              <span className="rounded-full bg-accent/10 px-2.5 py-1 text-[11px] font-medium text-accent">En uso real</span>
+              <span className="rounded-full bg-accent/10 px-2.5 py-1 text-[11px] font-medium text-accent">Disponible en piloto</span>
             </div>
             <ul className="grid gap-3 sm:grid-cols-2">
               {agente.map((t) => (

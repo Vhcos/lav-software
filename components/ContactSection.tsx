@@ -2,8 +2,62 @@
 
 import { useState } from "react";
 import { GlowCard } from "@/components/GlowCard";
+import { trackEvent } from "@/lib/analytics";
 
 const CALENDLY_URL = "https://calendly.com/lav-software";
+
+const SECTORS = [
+  "Construcción",
+  "Minería y servicios industriales",
+  "Servicios profesionales",
+  "Empresa familiar",
+  "Comercio",
+  "Tecnología",
+  "Otro",
+];
+
+const COMPANY_SIZES = [
+  "1–10 personas",
+  "11–50 personas",
+  "51–200 personas",
+  "201–500 personas",
+  "Más de 500 personas",
+];
+
+const PROCESSES = [
+  "Contabilidad y finanzas",
+  "Tesorería",
+  "Remuneraciones y personas",
+  "Operaciones",
+  "Documentos",
+  "Reportes y control de gestión",
+  "Integración de sistemas",
+  "Otro",
+];
+
+function SelectField({
+  id, label, value, onChange, options,
+}: {
+  id: string; label: string; value: string;
+  onChange: (v: string) => void; options: string[];
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className="mb-1.5 block text-xs font-medium text-white/50">{label}</label>
+      <select
+        id={id}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none transition focus:border-accent/50 focus:ring-1 focus:ring-accent/30"
+      >
+        <option value="" className="bg-navy">Selecciona…</option>
+        {options.map((o) => (
+          <option key={o} value={o} className="bg-navy">{o}</option>
+        ))}
+      </select>
+    </div>
+  );
+}
 
 function CardPanel({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
@@ -51,6 +105,7 @@ function CalendlyPanel() {
         href={CALENDLY_URL}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackEvent("calendly_opened")}
         className="flex h-11 w-full items-center justify-center rounded-xl bg-accent text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors hover:bg-accent-dark"
       >
         Elegir horario
@@ -65,6 +120,10 @@ function ContactFormPanel() {
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [role, setRole] = useState("");
+  const [sector, setSector] = useState("");
+  const [companySize, setCompanySize] = useState("");
+  const [businessProcess, setBusinessProcess] = useState("");
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -77,12 +136,14 @@ function ContactFormPanel() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, company, email, message }),
+        body: JSON.stringify({ name, company, email, message, role, sector, companySize, process: businessProcess }),
       });
       if (!res.ok) throw new Error();
       setSent(true);
+      trackEvent("contact_form_submitted");
     } catch {
       setError("No se pudo enviar. Intenta nuevamente.");
+      trackEvent("contact_form_failed");
     } finally {
       setLoading(false);
     }
@@ -111,7 +172,11 @@ function ContactFormPanel() {
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <InputField id="contact-name" label="Nombre" value={name} onChange={setName} placeholder="Tu nombre" required />
+          <InputField id="contact-role" label="Cargo" value={role} onChange={setRole} placeholder="Tu cargo" />
           <InputField id="contact-company" label="Empresa" value={company} onChange={setCompany} placeholder="Nombre de la empresa" />
+          <SelectField id="contact-sector" label="Sector" value={sector} onChange={setSector} options={SECTORS} />
+          <SelectField id="contact-size" label="Tamaño de la empresa" value={companySize} onChange={setCompanySize} options={COMPANY_SIZES} />
+          <SelectField id="contact-process" label="Proceso que quieres mejorar" value={businessProcess} onChange={setBusinessProcess} options={PROCESSES} />
           <InputField id="contact-email" label="Email" type="email" value={email} onChange={setEmail} placeholder="tu@empresa.cl" required />
           <div>
             <label htmlFor="contact-message" className="mb-1.5 block text-xs font-medium text-white/50">Mensaje</label>
@@ -157,6 +222,7 @@ function NewsletterPanel() {
       });
       if (!res.ok) throw new Error();
       setSent(true);
+      trackEvent("newsletter_subscribed");
     } catch {
       setError("No se pudo suscribir. Intenta nuevamente.");
     } finally {

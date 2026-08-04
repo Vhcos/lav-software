@@ -1,3 +1,5 @@
+import { TrackedLink } from "@/components/TrackedLink";
+
 const benefits = [
   "Implementación acompañada, paso a paso",
   "Configuración según tu negocio",
@@ -23,15 +25,20 @@ export default function FoundersProgramSection() {
                 guiada, adaptar los agentes a sus procesos y medir resultados reales.
               </p>
               <div className="flex flex-wrap items-center gap-5">
-                <a
+                <TrackedLink
                   href="#contacto"
+                  event="founders_program_clicked"
                   className="inline-flex h-12 items-center rounded-xl bg-accent px-7 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors hover:bg-accent-dark"
                 >
                   Quiero ordenar mi empresa
-                </a>
-                <a href="/programa-fundadores" className="text-sm text-white/50 transition-colors hover:text-white/80">
+                </TrackedLink>
+                <TrackedLink
+                  href="/programa-fundadores"
+                  event="founders_program_clicked"
+                  className="text-sm text-white/50 transition-colors hover:text-white/80"
+                >
                   Conocer el programa completo →
-                </a>
+                </TrackedLink>
               </div>
             </div>
 

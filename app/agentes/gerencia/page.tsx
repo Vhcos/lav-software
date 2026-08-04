@@ -85,7 +85,7 @@ export default function AgenteGerenciaPage() {
               El agente de gerencia de LAV está impulsado por Casiani. Consolida indicadores, explica
               qué cambió y prepara reportes para que decidas con información real.
             </p>
-            <span className="mb-8 inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">En uso real</span>
+            <span className="mb-8 inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">Validado en operación</span>
             <div>
               <a href="/#contacto" className="inline-flex h-12 items-center rounded-xl bg-accent px-8 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors hover:bg-accent-dark">
                 Agendar diagnóstico empresarial
