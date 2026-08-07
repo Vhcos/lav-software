@@ -77,6 +77,7 @@ Sitio web de **LAV Systems**, consultora chilena de software personalizado con I
 
 - **`/api/contact`**: Recibe `{name, email, company?, message}`, envía email con Resend a `vhurtado@grupohurtado.cl`. From: `contacto@lav.software`.
 - **`/api/newsletter`**: Recibe `{email}`, agrega a la Audience de Resend ID `00821f58-5245-48dd-8343-9a0abe55c702`.
+- **`/api/investors`**: Recibe el formulario de `/inversionistas` (`InvestorForm`), envía email con Resend a `vhurtado@grupohurtado.cl`. Respuesta automática al inversionista implementada pero desactivada (`SEND_AUTO_REPLY = false`) hasta confirmar deliverability del dominio.
 - La API key de Resend se lee de `process.env.RESEND_API_KEY` — nunca hardcodees credenciales.
 - **CRÍTICO**: instancia `new Resend(...)` **dentro del handler**, no a nivel de módulo. Si lo instancias afuera, el build falla porque Next.js importa el módulo en build time cuando la variable aún no existe.
 - Valida siempre el body antes de llamar a Resend. Retorna `{ error }` con status 4xx si faltan campos.
@@ -90,7 +91,7 @@ Sitio web de **LAV Systems**, consultora chilena de software personalizado con I
 - Logo en schema: `/icon.svg` (no `/favicon.svg` que no existe).
 
 #### Sitemap (`app/sitemap.ts`)
-- Genera `/sitemap.xml` con 8 URLs y prioridades.
+- Genera `/sitemap.xml` con 20 URLs y prioridades.
 - Al crear nuevas rutas, agregar la URL aquí.
 
 #### Robots (`app/robots.ts`)
@@ -109,27 +110,43 @@ Sitio web de **LAV Systems**, consultora chilena de software personalizado con I
 ### Estructura del sitio
 
 ```
-/                          → SPA principal (scroll con secciones)
-/diagnostico-ia-360        → Landing SEO
-/software-a-medida-ia      → Landing SEO
-/automatizacion-procesos   → Landing SEO
-/integracion-datos-iot     → Landing SEO
-/software-para-constructoras → Landing SEO
-/software-para-mineria     → Landing SEO
+/                                   → SPA principal (scroll con secciones)
+/plataforma                        → Plataforma empresarial
+/agentes                           → Overview de agentes de IA
+/agentes/gerencia                  → Agente de gerencia
+/agentes/documentos                → Agente documental
+/soluciones                        → Soluciones por dominio
+/integraciones                     → Integraciones
+/diagnostico                       → Diagnóstico empresarial
+/programa-fundadores               → Programa de Empresas Fundadoras
+/casos                             → Casos de estudio
+/pymes                             → Software y agentes de IA para pymes
+/contabilidad                      → Contabilidad asistida por IA
+/tesoreria                         → Tesorería para pymes
+/remuneraciones                    → Remuneraciones asistidas
+/operaciones                       → Operaciones para pymes
+/inversionistas                    → Captación de inversionistas + formulario
+/automatizacion-procesos           → Landing SEO
+/software-para-constructoras       → Landing SEO
+/software-para-mineria             → Landing SEO
 /software-para-empresas-familiares → Landing SEO
-/card.html                 → Tarjeta digital Víctor Hurtado (HTML estático)
+/card.html                         → Tarjeta digital Víctor Hurtado (HTML estático)
 ```
+
+Al crear una ruta nueva, agrégala aquí, en `app/sitemap.ts` y en el `README.md`.
 
 #### Secciones de la SPA (`app/page.tsx`)
 
 ```
 #inicio    → Hero
-#servicios → ServicesSection
+#agentes   → ServicesSection
 #proceso   → ProcessSection
 #casos     → CasesSection
 #origen    → OriginSection
 #contacto  → ContactSection
 ```
+
+Sin ancla propia, entre estas también corren: `ProblemSection`, `SolutionSection`, `HowItWorksSection`, `UseCasesExamplesSection`, `SecuritySection`, `ChatbotDifferenceSection`, `FoundersProgramSection`.
 
 ### Lo que NO hacer
 
