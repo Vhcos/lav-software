@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --test scripts/*.test.mjs",
+    "doctor": "node scripts/doctor.mjs",
+    "doctor:logs": "node scripts/doctor-logs.mjs"
   },
   "dependencies": {
     "@types/three": "^0.184.1",
