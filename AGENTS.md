@@ -164,7 +164,28 @@ Sin ancla propia, entre estas también corren: `ProblemSection`, `SolutionSectio
 npm run dev     # Desarrollo — hot reload
 npm run build   # Verifica que el build de producción funcione
 npm run lint    # ESLint — corre antes de commitear
+npm test        # Tests de los controles del doctor
 ```
+
+### Verificación de despliegue (Doctor)
+
+`Ready` de Vercel no equivale a validación funcional. Después de cada
+despliegue:
+
+```bash
+npm run doctor        # revisa https://lav.software
+npm run doctor -- <url>   # revisa un preview
+npm run doctor:logs   # Runtime Logs del deployment (exige VERCEL_TOKEN)
+```
+
+`doctor` corre en modo `publica`: además de las cabeceras de seguridad y la
+redirección a HTTPS, **exige que el sitio sea indexable** — nada de `noindex`,
+`robots.txt` abierto, `sitemap.xml` en 200, y `title`, `meta description`,
+`canonical`, las tres etiquetas Open Graph y un solo `h1` en la portada. Al
+crear una ruta nueva conviene pasarle su URL.
+
+Nivel error rompe el exit code; nivel aviso solo informa. La configuración vive
+en el bloque `CONFIG` de `scripts/doctor.mjs`.
 
 ### Variables de entorno requeridas
 
