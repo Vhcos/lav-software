@@ -51,7 +51,7 @@ const planes = [
     nombre: "Mensual",
     precio: "5 UF",
     sufijo: "+ IVA / mes",
-    detalle: "Pago anticipado con renovación automática. Cancela cuando quieras desde tu panel.",
+    detalle: "Pago anticipado con renovación automática mensual.",
     cta: "Empezar trial de 15 días",
     href: `${appUrl}/registro?plan=monthly`,
     destacado: false,
@@ -61,8 +61,9 @@ const planes = [
     nombre: "Founders",
     precio: "30 UF",
     sufijo: "+ IVA / 12 meses",
-    detalle: "50% de descuento sobre el valor normal de 60 UF. Limitado a las primeras 100 empresas que se suman.",
-    cta: "Asegurar cupo Founders",
+    detalle:
+      "50% de descuento sobre el valor normal de 60 UF. Sujeto a disponibilidad al momento de contratar — limitado a las primeras 100 empresas.",
+    cta: "Empezar trial Founders",
     href: `${appUrl}/registro?plan=founders`,
     destacado: true,
   },
@@ -85,11 +86,15 @@ const preguntas = [
   },
   {
     q: "¿Qué pasa si no hago nada al terminar el trial?",
-    a: "Tu cuenta queda en pausa: los datos se conservan, pero el acceso se restringe hasta que actives un plan de pago.",
+    a: "Tu cuenta entra en un período de regularización mientras confirmas tu medio de pago. Si no se resuelve en ese plazo, el acceso queda restringido a la sección de facturación hasta que actives un plan; tus datos se conservan y la cuenta se reactiva automáticamente al pagar.",
   },
   {
     q: "¿Qué incluye cada plan?",
     a: "Los mismos módulos en ambos planes. La diferencia es el precio y la duración del compromiso inicial, no las funciones disponibles.",
+  },
+  {
+    q: "¿Qué significa \"sujeto a disponibilidad\" en Founders?",
+    a: "El precio Founders lo eliges al crear tu cuenta, pero el cupo (limitado a 100 empresas) recién se reserva cuando contratas de verdad, al terminar tu trial. Si los cupos ya se agotaron en ese momento, te lo decimos antes de cobrarte nada.",
   },
   {
     q: "¿Qué pasa con el precio Founders después del primer año?",
