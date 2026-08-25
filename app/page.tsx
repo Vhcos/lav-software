@@ -8,6 +8,7 @@ import UseCasesExamplesSection from "@/components/UseCasesExamplesSection";
 import SecuritySection from "@/components/SecuritySection";
 import ChatbotDifferenceSection from "@/components/ChatbotDifferenceSection";
 import ProcessSection from "@/components/ProcessSection";
+import PricingSection from "@/components/PricingSection";
 import FoundersProgramSection from "@/components/FoundersProgramSection";
 import CasesSection from "@/components/CasesSection";
 import OriginSection from "@/components/OriginSection";
@@ -28,6 +29,7 @@ export default function Home() {
         <SecuritySection />
         <ChatbotDifferenceSection />
         <ProcessSection />
+        <PricingSection />
         <FoundersProgramSection />
         <CasesSection />
         <OriginSection />

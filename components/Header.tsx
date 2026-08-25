@@ -15,6 +15,7 @@ export default function Header() {
     { label: "Agentes",     href: "/agentes" },
     { label: "Soluciones",  href: "/soluciones" },
     { label: "Casos",       href: "/casos" },
+    { label: "Precios",     href: isHome ? "#precios" : "/precios" },
     { label: "Fundadores",  href: "/programa-fundadores" },
     { label: "Contacto",    href: `${p}#contacto` },
   ];

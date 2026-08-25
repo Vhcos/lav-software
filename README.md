@@ -55,6 +55,7 @@ lav-software/
 │   ├── integraciones/page.tsx                  # Integraciones
 │   ├── diagnostico/page.tsx                    # Diagnóstico empresarial
 │   ├── programa-fundadores/page.tsx            # Programa de Empresas Fundadoras
+│   ├── precios/page.tsx                        # Precios y CTA de alta hacia app.lav.software
 │   ├── casos/page.tsx                          # Casos de estudio
 │   ├── pymes/page.tsx                          # Software y agentes de IA para pymes
 │   ├── contabilidad/page.tsx                   # Contabilidad asistida por IA
@@ -84,6 +85,7 @@ lav-software/
 │   ├── SecuritySection.tsx           # Seguridad y confianza
 │   ├── ChatbotDifferenceSection.tsx  # Diferenciación vs. chatbots genéricos
 │   ├── ProcessSection.tsx            # Pasos del proceso
+│   ├── PricingSection.tsx            # Precios y CTA de alta hacia app.lav.software (SPA)
 │   ├── FoundersProgramSection.tsx    # Programa de Empresas Fundadoras (SPA)
 │   ├── CasesSection.tsx              # Casos de estudio (SPA)
 │   ├── OriginSection.tsx             # Origen profesional + chips + guiño sutil LAV
@@ -119,6 +121,7 @@ lav-software/
 #casos     → CasesSection
 #origen    → OriginSection
 #contacto  → ContactSection
+#precios   → PricingSection
 ```
 
 Entre estas, sin ancla propia, corren además: `ProblemSection`, `SolutionSection`, `HowItWorksSection`, `UseCasesExamplesSection`, `SecuritySection`, `ChatbotDifferenceSection`, `FoundersProgramSection`.
@@ -137,6 +140,7 @@ Páginas estáticas independientes con su propio nav (via `Header`, pathname-awa
 | `/integraciones` | Integraciones |
 | `/diagnostico` | Diagnóstico empresarial |
 | `/programa-fundadores` | Programa de Empresas Fundadoras |
+| `/precios` | Precios y CTA de alta hacia `app.lav.software/registro` |
 | `/casos` | Casos de estudio |
 | `/pymes` | Software y agentes de IA para pymes |
 | `/contabilidad` | Contabilidad asistida por IA |
