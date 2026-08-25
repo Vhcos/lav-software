@@ -119,6 +119,7 @@ Sitio web de **LAV Systems**, consultora chilena de software personalizado con I
 /integraciones                     → Integraciones
 /diagnostico                       → Diagnóstico empresarial
 /programa-fundadores               → Programa de Empresas Fundadoras
+/precios                           → Precios (trial, mensual, Founders) y CTA de alta hacia app.lav.software
 /casos                             → Casos de estudio
 /pymes                             → Software y agentes de IA para pymes
 /contabilidad                      → Contabilidad asistida por IA
@@ -144,9 +145,27 @@ Al crear una ruta nueva, agrégala aquí, en `app/sitemap.ts` y en el `README.md
 #casos     → CasesSection
 #origen    → OriginSection
 #contacto  → ContactSection
+#precios   → PricingSection
 ```
 
 Sin ancla propia, entre estas también corren: `ProblemSection`, `SolutionSection`, `HowItWorksSection`, `UseCasesExamplesSection`, `SecuritySection`, `ChatbotDifferenceSection`, `FoundersProgramSection`.
+
+### Handoff de precios hacia app.lav.software
+
+`lav-software` (este repo) es el sitio comercial público — **nunca** crea
+usuarios, tenants ni decide precio de forma confiable. `PricingSection`
+(home) y `/precios` muestran los planes vigentes (trial 15 días, mensual 5
+UF + IVA, Founders 30 UF + IVA por 12 meses, cupos limitados a 100) como
+copy informativo, y sus CTAs enlazan directo a
+`https://app.lav.software/registro`, opcionalmente con `?plan=monthly` o
+`?plan=founders`. Ese query param es solo una preselección de UI en
+`app.lav.software`: la ruta pública de signup en `lav-plataforma`
+(`apps/web/app/registro`) revalida el plan server-side contra su propio
+catálogo y nunca confía en lo que llega por URL. Si cambia el precio o las
+condiciones de Founders, la fuente de verdad es `lav-plataforma`
+(`packages/core/src/billing/dominio.ts` y
+`apps/web/lib/facturacion/pricing.ts`) — actualiza el copy aquí para que
+coincida, no al revés.
 
 ### Lo que NO hacer
 
