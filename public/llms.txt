@@ -1,0 +1,35 @@
+# LAV Systems
+
+> LAV es la plataforma empresarial agéntica para pymes chilenas: conecta contabilidad, tesorería, remuneraciones y operaciones en un solo sistema, coordinado por un agente empresarial y un equipo de agentes especializados.
+
+Fundada en 2024 por Víctor Hurtado, con sede en Santiago, Chile. Trial de 15 días sin tarjeta de crédito, plan mensual de 5 UF + IVA, y programa Founders de 30 UF + IVA por 12 meses para las primeras 100 empresas. Contacto: contacto@lav.software
+
+## Producto
+
+- [Plataforma empresarial](https://lav.software/plataforma): Datos confiables, procesos estructurados, módulos determinísticos, permisos, integraciones y trazabilidad. La base sobre la que trabajan los agentes.
+- [Agentes de LAV](https://lav.software/agentes): El agente empresarial de LAV y el equipo de agentes especializados: gerencia, contabilidad, tesorería, remuneraciones, operaciones y documentos.
+- [Contabilidad asistida por IA](https://lav.software/contabilidad): Ledger contable en vivo, documentos tributarios sincronizados con el SII y un agente que revisa, clasifica y explica, sin reemplazar al contador.
+- [Tesorería para pymes](https://lav.software/tesoreria): Caja, cartolas bancarias, conciliación y flujo de caja proyectado, con un agente que detecta vencimientos.
+- [Remuneraciones asistidas](https://lav.software/remuneraciones): Cálculo de remuneraciones, liquidaciones y Previred, con un agente que revisa novedades antes del cierre, con validación humana.
+- [Operaciones para pymes](https://lav.software/operaciones): Reportes diarios consolidados y un agente operacional que se adapta al negocio durante la implementación guiada.
+- [Integraciones](https://lav.software/integraciones): Conexión con el SII, bancos, Previred y los sistemas que la empresa ya usa.
+- [Automatización de procesos](https://lav.software/automatizacion-procesos): Agentes que clasifican documentos, concilian movimientos y revisan novedades sobre datos reales, no un motor de flujos genérico.
+
+## Soluciones por industria
+
+- [Software y agentes de IA para pymes](https://lav.software/pymes): Contabilidad, tesorería, remuneraciones y operaciones en un solo sistema.
+- [Agente empresarial para Constructoras](https://lav.software/software-para-constructoras): Contabilidad, tesorería y documentos con un agente operacional que consolida el avance de cada obra.
+- [Agente empresarial para Minería](https://lav.software/software-para-mineria): Contabilidad, tesorería y reportes de faena consolidados para empresas mineras y de servicios mineros.
+- [Agente empresarial para Empresas Familiares](https://lav.software/software-para-empresas-familiares): Contabilidad, tesorería y remuneraciones con visibilidad del negocio sin depender de las personas clave de siempre.
+
+## Precios y programa
+
+- [Precios](https://lav.software/precios): 15 días de prueba sin tarjeta, plan mensual de 5 UF + IVA, y programa Founders de 30 UF + IVA por 12 meses para las primeras 100 empresas. Todos los módulos incluidos en ambos planes.
+- [Programa de Empresas Fundadoras](https://lav.software/programa-fundadores): Implementación guiada en un grupo limitado de pymes, adaptando los agentes a sus procesos reales, con soporte directo.
+- [Diagnóstico empresarial](https://lav.software/diagnostico): Mapeo de procesos, datos y prioridades antes de activar agentes.
+
+## Otros
+
+- [Casos](https://lav.software/casos): Proyectos reales en producción que construyeron las capacidades de LAV.
+- [Soluciones](https://lav.software/soluciones): Todas las soluciones de LAV para pymes chilenas.
+- [Inversionistas](https://lav.software/inversionistas): Estrategia de entrada al mercado y oportunidad de acompañar la próxima etapa de crecimiento.

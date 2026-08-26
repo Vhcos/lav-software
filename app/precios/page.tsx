@@ -29,6 +29,33 @@ export const metadata: Metadata = {
   },
 };
 
+const preguntas = [
+  {
+    q: "¿Necesito una tarjeta para probar LAV?",
+    a: "No. El trial de 15 días parte sin pedir medio de pago. Lo inscribes solo si decides continuar.",
+  },
+  {
+    q: "¿Qué pasa si no hago nada al terminar el trial?",
+    a: "Tu cuenta entra en un período de regularización mientras confirmas tu medio de pago. Si no se resuelve en ese plazo, el acceso queda restringido a la sección de facturación hasta que actives un plan; tus datos se conservan y la cuenta se reactiva automáticamente al pagar.",
+  },
+  {
+    q: "¿Qué incluye cada plan?",
+    a: "Los mismos módulos en ambos planes. La diferencia es el precio y la duración del compromiso inicial, no las funciones disponibles.",
+  },
+  {
+    q: "¿Qué significa \"sujeto a disponibilidad\" en Founders?",
+    a: "El precio Founders lo eliges al crear tu cuenta, pero el cupo (limitado a 100 empresas) recién se reserva cuando contratas de verdad, al terminar tu trial. Si los cupos ya se agotaron en ese momento, te lo decimos antes de cobrarte nada.",
+  },
+  {
+    q: "¿Qué pasa con el precio Founders después del primer año?",
+    a: "El valor desde el segundo año se confirma antes de que termine tu primer período Founders, con aviso previo.",
+  },
+  {
+    q: "¿Cómo se calcula el cobro en pesos?",
+    a: "El monto en UF se convierte a CLP con el valor de la UF vigente el día del cobro, más IVA (19%).",
+  },
+];
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -41,6 +68,18 @@ const jsonLd = {
         "15 días de prueba, plan mensual de 5 UF + IVA, y el programa Founders de 30 UF + IVA por 12 meses para las primeras 100 empresas.",
       inLanguage: "es-CL",
       isPartOf: { "@id": `${siteUrl}/#website` },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
+      mainEntity: preguntas.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.a,
+        },
+      })),
     },
   ],
 };
@@ -77,33 +116,6 @@ const modulos = [
   "Operaciones",
   "Inventario",
   "Contactos",
-];
-
-const preguntas = [
-  {
-    q: "¿Necesito una tarjeta para probar LAV?",
-    a: "No. El trial de 15 días parte sin pedir medio de pago. Lo inscribes solo si decides continuar.",
-  },
-  {
-    q: "¿Qué pasa si no hago nada al terminar el trial?",
-    a: "Tu cuenta entra en un período de regularización mientras confirmas tu medio de pago. Si no se resuelve en ese plazo, el acceso queda restringido a la sección de facturación hasta que actives un plan; tus datos se conservan y la cuenta se reactiva automáticamente al pagar.",
-  },
-  {
-    q: "¿Qué incluye cada plan?",
-    a: "Los mismos módulos en ambos planes. La diferencia es el precio y la duración del compromiso inicial, no las funciones disponibles.",
-  },
-  {
-    q: "¿Qué significa \"sujeto a disponibilidad\" en Founders?",
-    a: "El precio Founders lo eliges al crear tu cuenta, pero el cupo (limitado a 100 empresas) recién se reserva cuando contratas de verdad, al terminar tu trial. Si los cupos ya se agotaron en ese momento, te lo decimos antes de cobrarte nada.",
-  },
-  {
-    q: "¿Qué pasa con el precio Founders después del primer año?",
-    a: "El valor desde el segundo año se confirma antes de que termine tu primer período Founders, con aviso previo.",
-  },
-  {
-    q: "¿Cómo se calcula el cobro en pesos?",
-    a: "El monto en UF se convierte a CLP con el valor de la UF vigente el día del cobro, más IVA (19%).",
-  },
 ];
 
 export default function PreciosPage() {
