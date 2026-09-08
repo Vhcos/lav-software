@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
     const safeCompanySize = escapeHtml(companySize);
     const safeProcess = escapeHtml(businessProcess);
 
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: FROM,
       to: TO,
       replyTo: email,
@@ -104,6 +104,14 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+
+    if (error) {
+      console.error("[contact] send rejected", {
+        name: error.name,
+        statusCode: error.statusCode,
+      });
+      return NextResponse.json({ error: "Error al enviar." }, { status: 502 });
+    }
 
     return NextResponse.json({ ok: true });
   } catch (err) {

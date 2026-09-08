@@ -116,7 +116,7 @@ export async function POST(req: NextRequest) {
     const subjectSource = organization || `${firstName} ${lastName}`;
     const subject = `Nuevo contacto de inversión LAV — ${sanitizeEmailHeader(subjectSource)}`;
 
-    await resend.emails.send({
+    const { error: notificationError } = await resend.emails.send({
       from: FROM,
       to: TO,
       replyTo: email,
@@ -149,8 +149,16 @@ export async function POST(req: NextRequest) {
       `,
     });
 
+    if (notificationError) {
+      console.error("[investors] notification rejected", {
+        name: notificationError.name,
+        statusCode: notificationError.statusCode,
+      });
+      return NextResponse.json({ error: "Error al enviar." }, { status: 502 });
+    }
+
     if (SEND_AUTO_REPLY) {
-      await resend.emails.send({
+      const { error: autoReplyError } = await resend.emails.send({
         from: FROM,
         to: email,
         subject: "Gracias por tu interés en LAV Systems",
@@ -161,6 +169,13 @@ export async function POST(req: NextRequest) {
           </div>
         `,
       });
+
+      if (autoReplyError) {
+        console.error("[investors] auto-reply rejected", {
+          name: autoReplyError.name,
+          statusCode: autoReplyError.statusCode,
+        });
+      }
     }
 
     return NextResponse.json({ ok: true });

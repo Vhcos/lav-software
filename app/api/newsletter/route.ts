@@ -34,16 +34,24 @@ export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     // 1. Add to Resend Audience (the list)
-    await resend.contacts.create({
+    const { error: contactError } = await resend.contacts.create({
       audienceId: AUDIENCE_ID,
       email,
       unsubscribed: false,
     });
 
+    if (contactError) {
+      console.error("[newsletter] contact rejected", {
+        name: contactError.name,
+        statusCode: contactError.statusCode,
+      });
+      return NextResponse.json({ error: "Error al suscribir." }, { status: 502 });
+    }
+
     // 2. Notify by email
     const safeEmail = escapeHtml(email);
 
-    await resend.emails.send({
+    const { error: notificationError } = await resend.emails.send({
       from: FROM,
       to: TO,
       replyTo: email,
@@ -62,6 +70,13 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+
+    if (notificationError) {
+      console.error("[newsletter] notification rejected", {
+        name: notificationError.name,
+        statusCode: notificationError.statusCode,
+      });
+    }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
