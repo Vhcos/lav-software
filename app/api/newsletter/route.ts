@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     // 1. Add to Resend Audience (the list)
-    const { error: contactError } = await resend.contacts.create({
+    const { data: contactData, error: contactError } = await resend.contacts.create({
       audienceId: AUDIENCE_ID,
       email,
       unsubscribed: false,
@@ -48,10 +48,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Error al suscribir." }, { status: 502 });
     }
 
+    console.info("[newsletter] contact accepted", { id: contactData?.id });
+
     // 2. Notify by email
     const safeEmail = escapeHtml(email);
 
-    const { error: notificationError } = await resend.emails.send({
+    const { data: notificationData, error: notificationError } = await resend.emails.send({
       from: FROM,
       to: TO,
       replyTo: email,
@@ -76,6 +78,8 @@ export async function POST(req: NextRequest) {
         name: notificationError.name,
         statusCode: notificationError.statusCode,
       });
+    } else {
+      console.info("[newsletter] notification accepted", { id: notificationData?.id });
     }
 
     return NextResponse.json({ ok: true });

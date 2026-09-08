@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
     const safeCompanySize = escapeHtml(companySize);
     const safeProcess = escapeHtml(businessProcess);
 
-    const { error } = await resend.emails.send({
+    const { data: emailData, error } = await resend.emails.send({
       from: FROM,
       to: TO,
       replyTo: email,
@@ -112,6 +112,8 @@ export async function POST(req: NextRequest) {
       });
       return NextResponse.json({ error: "Error al enviar." }, { status: 502 });
     }
+
+    console.info("[contact] send accepted", { id: emailData?.id });
 
     return NextResponse.json({ ok: true });
   } catch (err) {
