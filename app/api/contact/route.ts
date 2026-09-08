@@ -3,7 +3,7 @@ import { Resend } from "resend";
 import { escapeHtml, isValidEmail } from "@/lib/utils";
 
 const FROM = "LAV Systems <contacto@lav.software>";
-const TO   = "vhurtado@grupohurtado.cl";
+const TO   = "contacto@lav.software";
 
 const LIMITS = {
   name: 120,

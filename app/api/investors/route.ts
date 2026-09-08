@@ -4,7 +4,7 @@ import { escapeHtml, isValidEmail, isValidHttpUrl, sanitizeEmailHeader } from "@
 import { ORGANIZATION_TYPES, INVESTMENT_RANGES, INVESTMENT_STAGES, GEOGRAPHIES } from "@/lib/investor-options";
 
 const FROM = "LAV Systems <contacto@lav.software>";
-const TO   = "vhurtado@grupohurtado.cl";
+const TO   = "contacto@lav.software";
 
 // Respuesta automática al inversionista: implementada pero desactivada hasta confirmar
 // deliverability del dominio para envíos salientes fuera del flujo interno ya validado.

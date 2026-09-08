@@ -4,7 +4,7 @@ import { escapeHtml, isValidEmail } from "@/lib/utils";
 
 const AUDIENCE_ID = "00821f58-5245-48dd-8343-9a0abe55c702";
 const FROM        = "LAV Systems <contacto@lav.software>";
-const TO          = "vhurtado@grupohurtado.cl";
+const TO          = "contacto@lav.software";
 const EMAIL_MAX_LENGTH = 254;
 
 export async function POST(req: NextRequest) {
