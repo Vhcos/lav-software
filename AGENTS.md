@@ -75,12 +75,12 @@ Sitio web de **LAV Systems**, consultora chilena de software personalizado con I
 
 ### API Routes
 
-- **`/api/contact`**: Recibe `{name, email, company?, message}`, envía email con Resend a `vhurtado@grupohurtado.cl`. From: `contacto@lav.software`.
+- **`/api/contact`**: Recibe `{name, email, company?, message}`, envía email con Resend a `contacto@lav.software`. From: `contacto@lav.software`.
 - **`/api/newsletter`**: Recibe `{email}`, agrega a la Audience de Resend ID `00821f58-5245-48dd-8343-9a0abe55c702`.
-- **`/api/investors`**: Recibe el formulario de `/inversionistas` (`InvestorForm`), envía email con Resend a `vhurtado@grupohurtado.cl`. Respuesta automática al inversionista implementada pero desactivada (`SEND_AUTO_REPLY = false`) hasta confirmar deliverability del dominio.
+- **`/api/investors`**: Recibe el formulario de `/inversionistas` (`InvestorForm`), envía email con Resend a `contacto@lav.software`. Respuesta automática al inversionista implementada pero desactivada (`SEND_AUTO_REPLY = false`).
 - La API key de Resend se lee de `process.env.RESEND_API_KEY` — nunca hardcodees credenciales.
 - **CRÍTICO**: instancia `new Resend(...)` **dentro del handler**, no a nivel de módulo. Si lo instancias afuera, el build falla porque Next.js importa el módulo en build time cuando la variable aún no existe.
-- Valida siempre el body antes de llamar a Resend. Retorna `{ error }` con status 4xx si faltan campos.
+- Valida siempre el body antes de llamar a Resend. Retorna `{ error }` con status 4xx si faltan campos; contacto/inversionistas retornan 502 ante un rechazo del proveedor y newsletter retorna 502 si no puede crear el contacto. Si falla solo su aviso interno, conserva la suscripción. Los logs incluyen tipo/código de rechazo o el message ID aceptado, nunca contenido ni direcciones de formularios.
 
 ### SEO
 

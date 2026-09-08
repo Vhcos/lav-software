@@ -172,7 +172,7 @@ Páginas estáticas con metadata, JSON-LD y contenido por vertical industrial:
 // Body
 { "name": "string", "email": "string", "company": "string?", "message": "string" }
 // Respuesta 200
-{ "success": true }
+{ "ok": true }
 ```
 
 ### `POST /api/newsletter`
@@ -181,7 +181,7 @@ Páginas estáticas con metadata, JSON-LD y contenido por vertical industrial:
 // Body
 { "email": "string" }
 // Respuesta 200
-{ "success": true }
+{ "ok": true }
 ```
 
 ### `POST /api/investors`
@@ -199,7 +199,19 @@ Páginas estáticas con metadata, JSON-LD y contenido por vertical industrial:
 { "ok": true }
 ```
 
-Envía el detalle por email vía Resend. La respuesta automática al inversionista está implementada pero desactivada (`SEND_AUTO_REPLY = false` en `app/api/investors/route.ts`) hasta confirmar deliverability del dominio para envíos salientes.
+Los tres formularios envían sus notificaciones a `contacto@lav.software` desde
+`LAV Systems <contacto@lav.software>`. Cada handler valida la respuesta de
+Resend y registra solo tipo/código de rechazo o el message ID aceptado. Contacto
+e inversionistas responden `502` si falla su notificación; newsletter responde
+`502` si no pudo crear el contacto y conserva la suscripción si falla solo el
+aviso interno.
+La respuesta automática al inversionista está implementada pero desactivada
+(`SEND_AUTO_REPLY = false` en `app/api/investors/route.ts`).
+
+La prueba controlada de Production del 07-09-2026 fue aceptada y marcada como
+`Delivered` por Resend, y recibida en `contacto@lav.software`. El estado de
+entrega final se consulta en Resend; el sitio aún no persiste webhooks de
+entrega, rebote o supresión.
 
 ## SEO
 
